@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+  <meta charset="UTF-8">
+  <title>Кесте және медиа элементтері</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f7fa;
+      color: #333;
+      line-height: 1.6;
+      margin: 20px;
+    }
+
+    h1, h2, h3 {
+      color: #1b4f72;
+      text-align: center;
+    }
+
+    p {
+      text-align: justify;
+      max-width: 800px;
+      margin: 0 auto 15px;
+    }
+
+    table {
+      margin: 20px auto;
+      border-collapse: collapse;
+      width: 70%;
+    }
+
+    th, td {
+      border: 2px solid #3498db;
+      padding: 10px;
+      text-align: center;
+    }
+
+    th {
+      background-color: #3498db;
+      color: white;
+    }
+
+    td {
+      background-color: #ecf6ff;
+    }
+
+    video, audio {
+      display: block;
+      margin: 20px auto;
+      border: 3px solid #3498db;
+      border-radius: 10px;
+    }
+
+    .box {
+      background: #eaf2f8;
+      border-radius: 12px;
+      padding: 15px 25px;
+      margin: 20px auto;
+      max-width: 900px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    ul {
+      max-width: 700px;
+      margin: 10px auto;
+      line-height: 1.7;
+    }
+
+    .task {
+      background: #fef9e7;
+      padding: 20px;
+      border-radius: 12px;
+      border: 1px solid #f4d03f;
+      max-width: 900px;
+      margin: 25px auto;
+    }
+
+    .criteria {
+      background: #e8f8f5;
+      border: 1px solid #1abc9c;
+      padding: 15px;
+      border-radius: 12px;
+      max-width: 700px;
+      margin: 25px auto;
+    }
+
+    table.criteria-table {
+      width: 100%;
+      border: 1px solid #1abc9c;
+    }
+
+    table.criteria-table th, table.criteria-table td {
+      border: 1px solid #1abc9c;
+      padding: 8px;
+    }
+
+    table.criteria-table th {
+      background-color: #1abc9c;
+      color: white;
+    }
+
+  </style>
+</head>
+<body>
+
+  <h1>ТЕОРИЯЛЫҚ САБАҚ</h1>
+  <h2>Тақырып: Кесте және медиа элементтері</h2>
+   <h2>Группа: 3ВТ-9А2</h2>
+
+  <div class="box">
+    <h3>🎯 Сабақтың мақсаты:</h3>
+    <ul>
+      <li>HTML-де <b>кесте (table)</b> құруды үйрену;</li>
+      <li>Веб-бетке <b>аудио және видео</b> элементтерін қосуды меңгеру.</li>
+    </ul>
+  </div>
+
+  <div class="box">
+    <h3>🗂️ 1. Кесте (Table)</h3>
+    <p><b>Кесте</b> — мәліметтерді жол және баған түрінде көрсетуге арналған HTML элементі. 
+      Кесте көбіне студент тізімін, бағаларды немесе кез келген деректерді ретпен көрсетуге қолданылады.</p>
+
+    <table>
+      <tr>
+        <th>Тег</th>
+        <th>Мағынасы</th>
+      </tr>
+      <tr>
+        <td>&lt;table&gt;</td>
+        <td>Кестенің басы мен соңы</td>
+      </tr>
+      <tr>
+        <td>&lt;tr&gt;</td>
+        <td>Жол (table row)</td>
+      </tr>
+      <tr>
+        <td>&lt;th&gt;</td>
+        <td>Кесте тақырып ұяшығы (қалың)</td>
+      </tr>
+      <tr>
+        <td>&lt;td&gt;</td>
+        <td>Кесте ұяшығы (мәлімет)</td>
+      </tr>
+    </table>
+
+    <p><b>Кесте мысалы:</b></p>
+    <pre style="background:#f8f9f9; padding:10px; border-radius:10px; width:80%; margin:auto;">
+&lt;table border="1"&gt;
+  &lt;tr&gt;
+    &lt;th&gt;№&lt;/th&gt;
+    &lt;th&gt;Аты-жөні&lt;/th&gt;
+    &lt;th&gt;Бағасы&lt;/th&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;1&lt;/td&gt;
+    &lt;td&gt;Бауыржан&lt;/td&gt;
+    &lt;td&gt;95&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+    </pre>
+  </div>
+
+  <div class="box">
+    <h3>🎵 2. Медиа элементтері</h3>
+    <p>Веб-бетке <b>бейне (video)</b> және <b>аудио (audio)</b> элементтерін енгізуге болады. Бұл сайтты тартымды етеді.</p>
+
+    <p><b>Видео қосу үлгісі:</b></p>
+    <pre style="background:#f8f9f9; padding:10px; border-radius:10px; width:80%; margin:auto;">
+&lt;video width="400" controls&gt;
+  &lt;source src="video.mp4" type="video/mp4"&gt;
+  Сіздің браузеріңіз бейнені қолдамайды.
+&lt;/video&gt;
+    </pre>
+
+    <p><b>Аудио қосу үлгісі:</b></p>
+    <pre style="background:#f8f9f9; padding:10px; border-radius:10px; width:80%; margin:auto;">
+&lt;audio controls&gt;
+  &lt;source src="music.mp3" type="audio/mpeg"&gt;
+  Сіздің браузеріңіз аудионы қолдамайды.
+&lt;/audio&gt;
+    </pre>
+  </div>
+
+  <div class="box">
+    <h3>💻 ҮЛГІ (Образец)</h3>
+    <p>Төменде толық мысал берілген:</p>
+
+    <div style="background:#fff; border:1px solid #ccc; padding:15px; border-radius:10px;">
+
+<pre style="text-align:left; overflow-x:auto;">
+&lt;!DOCTYPE html&gt;
+&lt;html lang="kk"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;title&gt;Менің сүйікті фильмі&lt;/title&gt;
+&lt;/head&gt;
+&lt;body style="text-align:center; font-family:Arial;"&gt;
+
+  &lt;h1&gt;Менің сүйікті фильмі – “Avatar”&lt;/h1&gt;
+  &lt;p&gt;Бұл фильм табиғат пен адам арасындағы тепе-теңдік туралы баяндайды.&lt;/p&gt;
+
+  &lt;h2&gt;Басты кейіпкерлер:&lt;/h2&gt;
+  &lt;table border="2" align="center" cellpadding="8"&gt;
+    &lt;tr&gt;
+      &lt;th&gt;№&lt;/th&gt;
+      &lt;th&gt;Аты&lt;/th&gt;
+      &lt;th&gt;Рөлі&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;Джейк Салли&lt;/td&gt;
+      &lt;td&gt;Басты кейіпкер&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;2&lt;/td&gt;
+      &lt;td&gt;Нейтири&lt;/td&gt;
+      &lt;td&gt;Пандора халқының өкілі&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;3&lt;/td&gt;
+      &lt;td&gt;Грейс Августин&lt;/td&gt;
+      &lt;td&gt;Ғалым&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/table&gt;
+
+  &lt;h2&gt;Фильмнен үзінді:&lt;/h2&gt;
+  &lt;video width="400" controls&gt;
+    &lt;source src="avatar.mp4" type="video/mp4"&gt;
+  &lt;/video&gt;
+
+  &lt;h2&gt;Фильм музыкасы:&lt;/h2&gt;
+  &lt;audio controls&gt;
+    &lt;source src="music.mp3" type="audio/mpeg"&gt;
+  &lt;/audio&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+    </div>
+  </div>
+
+
+  <div class="criteria">
+    <h3>Практикалык тапсырма осы кестені кайталасаныздар болады Бірінші кестені құрып алыңыздар содан кейін ғана сәндейсіздер</h3>
+    <table class="criteria-table">
+      <tr>
+        <th>№</th>
+        <th>Критерий</th>
+        <th>Ұпай</th>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td>Кесте дұрыс құрылған</td>
+        <td>4</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Медиа элемент дұрыс жұмыс істейді</td>
+        <td>4</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>Дизайн және тақырыпқа сәйкестік</td>
+        <td>2</td>
+      </tr>
+      <tr style="font-weight:bold;">
+        <td colspan="2">Барлығы</td>
+        <td>10 ұпай</td>
+      </tr>
+    </table>
+  </div>
+
+</body>
+</html>
