@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>KM08 — Тег DIV и контейнеры</title>
+  <style>
+    body {
+      font-family: "Segoe UI", sans-serif;
+      background-color: #f4f6f8;
+      color: #222;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background: linear-gradient(to right, #6fb1fc, #4364f7);
+      color: white;
+      text-align: center;
+      padding: 25px 0;
+      font-size: 24px;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    section {
+      background-color: white;
+      margin: 20px auto;
+      padding: 25px;
+      border-radius: 10px;
+      max-width: 900px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      color: #2b4ea1;
+      border-bottom: 2px solid #e3e6eb;
+      padding-bottom: 5px;
+    }
+
+    pre {
+      background: #eef3fa;
+      padding: 10px;
+      border-radius: 6px;
+      overflow-x: auto;
+    }
+
+    code {
+      color: #004aad;
+      font-weight: bold;
+    }
+
+    .test-question {
+      margin: 15px 0;
+    }
+
+    .options label {
+      display: block;
+      margin: 5px 0;
+    }
+
+    button {
+      background-color: #4364f7;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    button:hover {
+      background-color: #2b4ea1;
+    }
+
+    #result {
+      margin-top: 15px;
+      font-weight: bold;
+      color: #333;
+    }
+
+    .task {
+      background: #f9fafc;
+      border-left: 4px solid #4b72ff;
+      padding: 10px 15px;
+      margin: 10px 0;
+      border-radius: 5px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 15px;
+      font-size: 14px;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+
+  <header>KM08 — Тег DIV и контейнеры</header>
+
+  <section>
+    <h2>📘 Лекция</h2>
+    <p><b>&lt;div&gt;</b> — один из самых часто используемых контейнерных элементов в HTML. Он предназначен для разделения структуры страницы и группировки элементов.</p>
+
+    <p>Слово <b>&lt;div&gt;</b> происходит от английского <i>"division"</i> (раздел, секция). Этот тег сам по себе не несёт визуального смысла, но позволяет группировать содержимое, применять стили и управлять расположением блоков.</p>
+
+    <h3>🔹 Основной синтаксис</h3>
+    <pre><code>&lt;div&gt;Здесь находится содержимое&lt;/div&gt;</code></pre>
+
+    <h3>🔹 Пример использования</h3>
+    <pre><code>&lt;div class="container"&gt;
+  &lt;div id="header"&gt;Верхняя часть&lt;/div&gt;
+  &lt;div id="content"&gt;Основное содержимое&lt;/div&gt;
+  &lt;div id="footer"&gt;Нижняя часть&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+
+    <h3>🔹 Для чего нужен DIV?</h3>
+    <ul>
+      <li>💡 Для разделения веб-страницы на части</li>
+      <li>🎨 Для оформления и стилизации через CSS</li>
+      <li>📐 Для управления расположением элементов</li>
+      <li>📱 Для создания адаптивной вёрстки</li>
+      <li>🧩 Для улучшения структуры HTML-кода</li>
+    </ul>
+
+    <h3>🔹 Разница между class и id</h3>
+    <ul>
+      <li><b>class</b> — используется для применения одного стиля к нескольким элементам</li>
+      <li><b>id</b> — используется для обозначения уникального элемента</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>🧩 Тестовые вопросы</h2>
+
+    <form id="quizForm">
+      <div class="test-question">
+        <b>1)</b> Для чего используется тег &lt;div&gt;?<br>
+        <div class="options">
+          <label><input type="radio" name="q1" value="a"> Чтобы сделать текст курсивом</label>
+          <label><input type="radio" name="q1" value="b"> Чтобы создать список</label>
+          <label><input type="radio" name="q1" value="c"> Чтобы группировать элементы</label>
+          <label><input type="radio" name="q1" value="d"> Чтобы сделать ссылку</label>
+        </div>
+      </div>
+
+      <div class="test-question">
+        <b>2)</b> От какого слова произошло слово &lt;div&gt;?<br>
+        <div class="options">
+          <label><input type="radio" name="q2" value="a"> Device</label>
+          <label><input type="radio" name="q2" value="b"> Divide</label>
+          <label><input type="radio" name="q2" value="c"> Division</label>
+        </div>
+      </div>
+
+      <div class="test-question">
+        <b>3)</b> С помощью чего задаются стили для &lt;div&gt;?<br>
+        <div class="options">
+          <label><input type="radio" name="q3" value="a"> Java</label>
+          <label><input type="radio" name="q3" value="b"> CSS</label>
+          <label><input type="radio" name="q3" value="c"> Python</label>
+        </div>
+      </div>
+
+      <div class="test-question">
+        <b>4)</b> Какой атрибут используется, чтобы применить один стиль к нескольким элементам?<br>
+        <div class="options">
+          <label><input type="radio" name="q4" value="a"> id</label>
+          <label><input type="radio" name="q4" value="b"> class</label>
+          <label><input type="radio" name="q4" value="c"> href</label>
+        </div>
+      </div>
+
+      <div class="test-question">
+        <b>5)</b> Что означает запись &lt;div id="header"&gt;?<br>
+        <div class="options">
+          <label><input type="radio" name="q5" value="a"> Элемент с уникальным идентификатором</label>
+          <label><input type="radio" name="q5" value="b"> Общий стиль для всех div</label>
+          <label><input type="radio" name="q5" value="c"> Название таблицы</label>
+        </div>
+      </div>
+
+      <button type="button" onclick="checkAnswers()">Проверить результат</button>
+      <div id="result"></div>
+    </form>
+  </section>
+
+  <section>
+    <h2>💻 Практические задания</h2>
+
+    <div class="task">
+      <b>Задание 1:</b><br>
+      Создай страницу под названием "Моя первая секция сайта".  
+      Пусть будет 3 основных &lt;div&gt;: верхний, средний и нижний блок.  
+      Задай каждому блоку свой цвет и красивый внешний вид.
+    </div>
+
+    <div class="task">
+      <b>Задание 2:</b><br>
+      Создай страницу на тему "Моё любимое хобби".  
+      Добавь один большой контейнер, внутри — заголовок, изображение и описание.  
+      Применяй border, padding и background-color.
+    </div>
+
+    <div class="task">
+      <b>Задание 3:</b><br>
+      Сделай блок, состоящий из 3 частей:  
+      1 — заголовок, 2 — три блока (левый, центр, правый), 3 — нижняя надпись.  
+      Всё реализуй с помощью &lt;div&gt; тегов.
+    </div>
+  </section>
+
+  <footer>
+    © 2025 — "Uzakbayev Bauyrzhan" | KM08 Основы Web
+  </footer>
+
+  <script>
+    function checkAnswers() {
+      const correct = { q1: "c", q2: "c", q3: "b", q4: "b", q5: "a" };
+      let score = 0;
+      const total = Object.keys(correct).length;
+      const form = document.getElementById("quizForm");
+
+      for (let key in correct) {
+        const selected = form.querySelector(`input[name="${key}"]:checked`);
+        if (selected && selected.value === correct[key]) score++;
+      }
+
+      const result = document.getElementById("result");
+      result.innerHTML = `Твой результат: <b>${score}/${total}</b>`;
+      result.style.color = score === total ? "green" : "red";
+    }
+  </script>
+
+</body>
+</html>

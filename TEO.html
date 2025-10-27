@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+  <meta charset="UTF-8">
+  <title>KM08 — DIV тегі және контейнерлер</title>
+  <style>
+    body {
+      font-family: "Segoe UI", sans-serif;
+      background-color: #f4f6f8;
+      color: #222;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background: linear-gradient(to right, #6fb1fc, #4364f7);
+      color: white;
+      text-align: center;
+      padding: 25px 0;
+      font-size: 24px;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    section {
+      background-color: white;
+      margin: 20px auto;
+      padding: 25px;
+      border-radius: 10px;
+      max-width: 900px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      color: #2b4ea1;
+      border-bottom: 2px solid #e3e6eb;
+      padding-bottom: 5px;
+    }
+
+    pre {
+      background: #eef3fa;
+      padding: 10px;
+      border-radius: 6px;
+      overflow-x: auto;
+    }
+
+    code {
+      color: #004aad;
+      font-weight: bold;
+    }
+
+    .test-question {
+      margin: 15px 0;
+    }
+
+    .options label {
+      display: block;
+      margin: 5px 0;
+    }
+
+    button {
+      background-color: #4364f7;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    button:hover {
+      background-color: #2b4ea1;
+    }
+
+    #result {
+      margin-top: 15px;
+      font-weight: bold;
+      color: #333;
+    }
+
+    .task {
+      background: #f9fafc;
+      border-left: 4px solid #4b72ff;
+      padding: 10px 15px;
+      margin: 10px 0;
+      border-radius: 5px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 15px;
+      font-size: 14px;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+
+  <header>KM08 — DIV тегі және контейнерлер</header>
+
+  <section>
+    <h2>📘 Лекция</h2>
+    <p><b>&lt;div&gt;</b> тегі HTML-де ең жиі қолданылатын контейнер элементтерінің бірі болып табылады. Ол беттің құрылымын бөлуге және элементтерді топтастыруға арналған.</p>
+
+    <p><b>&lt;div&gt;</b> сөзі ағылшынның <i>"division"</i> (бөлік, секция) сөзінен шыққан. Бұл тег визуалды мағына бермейді, бірақ ол арқылы беттегі элементтерді топтастырып, стиль қолдануға және орналасуын басқаруға болады.</p>
+
+    <h3>🔹 Негізгі синтаксис</h3>
+    <pre><code>&lt;div&gt;Мұнда мазмұн орналасады&lt;/div&gt;</code></pre>
+
+    <h3>🔹 Қолдану мысалы</h3>
+    <pre><code>&lt;div class="container"&gt;
+  &lt;div id="header"&gt;Жоғарғы бөлік&lt;/div&gt;
+  &lt;div id="content"&gt;Мазмұн бөлігі&lt;/div&gt;
+  &lt;div id="footer"&gt;Төменгі бөлік&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+
+    <h3>🔹 DIV не үшін қажет?</h3>
+    <ul>
+      <li>💡 Веб-бетті бірнеше бөлікке бөлу үшін</li>
+      <li>🎨 CSS арқылы стиль беріп, безендіру үшін</li>
+      <li>📐 Элементтердің орналасуын реттеу үшін</li>
+      <li>📱 Адаптивті макет жасау үшін</li>
+      <li>🧩 HTML құрылымын түсінікті ету үшін</li>
+    </ul>
+
+    <h3>🔹 class және id айырмашылығы</h3>
+    <ul>
+      <li><b>class</b> — бірнеше элементке ортақ стиль беруге арналған</li>
+      <li><b>id</b> — бірегей элементті анықтауға арналған</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>🧩 Тест сұрақтары</h2>
+
+    <form id="quizForm">
+      <div class="test-question">
+        <b>1)</b> &lt;div&gt; тегі не үшін қолданылады?<br>
+        <div class="options">
+          <label><input type="radio" name="q1" value="a"> Мәтінді қиғаш қылу үшін</label>
+          <label><input type="radio" name="q1" value="b"> Тізім жасау үшін</label>
+          <label><input type="radio" name="q1" value="c"> Элементтерді топтастыру үшін</label>
+          <label><input type="radio" name="q1" value="d"> Сілтеме жасау үшін</label>
+        </div>
+      </div>
+
+      <div class="test-question">
+        <b>2)</b> &lt;div&gt; сөзі қай сөзден шыққан?<br>
+        <div class="options">
+          <label><input type="radio" name="q2" value="a"> Device</label>
+          <label><input type="radio" name="q2" value="b"> Divide</label>
+          <label><input type="radio" name="q2" value="c"> Division</label>
+        </div>
+      </div>
+
+      <div class="test-question">
+        <b>3)</b> &lt;div&gt; тегіне стиль беру үшін не қолданылады?<br>
+        <div class="options">
+          <label><input type="radio" name="q3" value="a"> Java</label>
+          <label><input type="radio" name="q3" value="b"> CSS</label>
+          <label><input type="radio" name="q3" value="c"> Python</label>
+        </div>
+      </div>
+
+      <div class="test-question">
+        <b>4)</b> Бірдей стиль бірнеше элементке қолданылсын десек, қай атрибут қажет?<br>
+        <div class="options">
+          <label><input type="radio" name="q4" value="a"> id</label>
+          <label><input type="radio" name="q4" value="b"> class</label>
+          <label><input type="radio" name="q4" value="c"> href</label>
+        </div>
+      </div>
+
+      <div class="test-question">
+        <b>5)</b> &lt;div id="header"&gt; деген не білдіреді?<br>
+        <div class="options">
+          <label><input type="radio" name="q5" value="a"> Бірегей атауы бар элемент</label>
+          <label><input type="radio" name="q5" value="b"> Барлық div-ке ортақ стиль</label>
+          <label><input type="radio" name="q5" value="c"> Кесте атауы</label>
+        </div>
+      </div>
+
+      <button type="button" onclick="checkAnswers()">Нәтижені тексеру</button>
+      <div id="result"></div>
+    </form>
+  </section>
+
+  <section>
+    <h2>💻 Практикалық тапсырмалар</h2>
+
+    <div class="task">
+      <b>Тапсырма 1:</b>  
+      "Менің алғашқы сайт бөлігім" атты бет жаса.  
+      3 негізгі &lt;div&gt; болсын: жоғарғы, ортаңғы және төменгі бөлік.  
+      Барлығына түрлі түс беріп, әдемі көрініс жаса.
+    </div>
+
+    <div class="task">
+      <b>Тапсырма 2:</b>  
+      "Менің сүйікті хоббиім" тақырыбында жеке бет жаса.  
+      Бір үлкен контейнер ашып, ішіне тақырып, сурет және сипаттама жаз.  
+      Контейнерге жиек (border), ішкі арақашықтық (padding), және фон түсі (background-color) бер.
+    </div>
+
+    <div class="task">
+      <b>Тапсырма 3:</b>  
+      3 қатардан тұратын блок жаса:  
+      1 — тақырып, 2 — 3 бөлік (сол, орта, оң), 3 — төменгі жазу.  
+      Барлығы &lt;div&gt; тегтерімен жасалсын.
+    </div>
+  </section>
+
+  <footer>
+    © 2025 — "Uzakbayev Bauyrzhan" | KM08 Web негіздері
+  </footer>
+
+  <script>
+    function checkAnswers() {
+      const correct = { q1: "c", q2: "c", q3: "b", q4: "b", q5: "a" };
+      let score = 0;
+      const total = Object.keys(correct).length;
+      const form = document.getElementById("quizForm");
+
+      for (let key in correct) {
+        const selected = form.querySelector(`input[name="${key}"]:checked`);
+        if (selected && selected.value === correct[key]) score++;
+      }
+
+      const result = document.getElementById("result");
+      result.innerHTML = `Сенің нәтижең: <b>${score}/${total}</b>`;
+      result.style.color = score === total ? "green" : "red";
+    }
+  </script>
+
+</body>
+</html>
