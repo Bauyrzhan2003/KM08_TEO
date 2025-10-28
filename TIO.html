@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+  <meta charset="UTF-8">
+  <title>HTML5 жаңа мүмкіндіктері: &lt;details&gt; және &lt;summary&gt;</title>
+  <style>
+    body {
+      font-family: "Segoe UI", sans-serif;
+      background: #f8f9fa;
+      color: #222;
+      margin: 0;
+      padding: 20px;
+      line-height: 1.6;
+    }
+    h1, h2, h5 {
+      text-align: center;
+      color: #0056b3;
+    }
+    section {
+      background: white;
+      padding: 20px;
+      margin: 20px auto;
+      max-width: 800px;
+      border-radius: 15px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    details {
+      margin-top: 10px;
+      background: #eef5ff;
+      padding: 10px;
+      border-radius: 8px;
+    }
+    summary {
+      font-weight: bold;
+      cursor: pointer;
+    }
+    pre {
+      background: #e8f5e9;
+      padding: 10px;
+      border-radius: 8px;
+      overflow-x: auto;
+    }
+    button {
+      background: #007bff;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #0056b3;
+    }
+    .result {
+      font-weight: bold;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>HTML5 жаңа мүмкіндіктері</h1>
+  <h5>ГРУППА: 3ВТ-9А2</h5>
+  <h2>&lt;details&gt; және &lt;summary&gt; тегтері</h2>
+
+  <section>
+    <h3>1️⃣ Теория</h3>
+    <p>
+      <b>&lt;details&gt;</b> және <b>&lt;summary&gt;</b> — HTML5 енгізген жаңа тегтер.
+      Бұл тегтер веб-бетте сұрақ-жауап, жиі қойылатын сұрақтар (FAQ), немесе қосымша ақпаратты ашып/жабуға арналған блок жасауға мүмкіндік береді.
+    </p>
+    <ul>
+      <li><b>&lt;summary&gt;</b> — тақырып ретінде көрінеді, оны басқанда ішкі мазмұн ашылады.</li>
+      <li><b>&lt;details&gt;</b> — ашылатын контенттің контейнері.</li>
+    </ul>
+
+    <p>Мысалы:</p>
+    <pre>
+&lt;details&gt;
+  &lt;summary&gt;HTML деген не?&lt;/summary&gt;
+  &lt;p&gt;HTML — гипермәтіндік белгілеу тілі, веб-беттердің құрылымын анықтайды.&lt;/p&gt;
+&lt;/details&gt;
+    </pre>
+
+    <details>
+      <summary>Мысалды көру</summary>
+      <p>HTML деген не?<br>HTML — гипермәтіндік белгілеу тілі, веб-беттердің құрылымын анықтайды.</p>
+    </details>
+  </section>
+
+<section>
+  <h3>2️⃣ Мини тест</h3>
+  <form id="quiz">
+    <p>1. <b>&lt;details&gt;</b> тегі не үшін қолданылады?</p>
+    <label><input type="radio" name="q1" value="a"> Сурет қою үшін</label><br>
+    <label><input type="radio" name="q1" value="b"> Қосымша ақпаратты ашу/жасыру үшін</label><br>
+    <label><input type="radio" name="q1" value="c"> Сілтеме жасау үшін</label><br><br>
+
+    <p>2. <b>&lt;summary&gt;</b> тегі қандай рөл атқарады?</p>
+    <label><input type="radio" name="q2" value="a"> Ашылатын мазмұнның тақырыбы</label><br>
+    <label><input type="radio" name="q2" value="b"> Парақ тақырыбы</label><br>
+    <label><input type="radio" name="q2" value="c"> Сурет астындағы жазу</label><br><br>
+
+    <p>3. <b>&lt;details&gt;</b> блогы әдетте бет ашылғанда қандай күйде болады?</p>
+    <label><input type="radio" name="q3" value="a"> Әрқашан ашық</label><br>
+    <label><input type="radio" name="q3" value="b"> Әрқашан жабық</label><br>
+    <label><input type="radio" name="q3" value="c"> "open" атрибуты болса ғана ашық</label><br><br>
+
+    <p>4. Ашық күйге мәжбүрлейтін атрибут қалай аталады?</p>
+    <label><input type="radio" name="q4" value="a"> visible</label><br>
+    <label><input type="radio" name="q4" value="b"> expand</label><br>
+    <label><input type="radio" name="q4" value="c"> open</label><br><br>
+
+    <p>5. <b>&lt;summary&gt;</b> тегінсіз <b>&lt;details&gt;</b> жұмыс істей ме?</p>
+    <label><input type="radio" name="q5" value="a"> Иә, бірақ басатын тақырып болмайды</label><br>
+    <label><input type="radio" name="q5" value="b"> Жоқ, мүлде жұмыс істемейді</label><br>
+    <label><input type="radio" name="q5" value="c"> Тек JavaScript арқылы ғана істейді</label><br><br>
+
+    <p>6. Бұл тегтер қай HTML нұсқасында пайда болды?</p>
+    <label><input type="radio" name="q6" value="a"> HTML4</label><br>
+    <label><input type="radio" name="q6" value="b"> HTML5</label><br>
+    <label><input type="radio" name="q6" value="c"> XHTML</label><br><br>
+
+    <button type="button" onclick="checkAnswers()">Нәтижені тексеру</button>
+  </form>
+  <div class="result" id="result"></div>
+</section>
+
+<script>
+  function checkAnswers() {
+    let score = 0;
+
+    const answers = {
+      q1: 'b',
+      q2: 'a',
+      q3: 'c',
+      q4: 'c',
+      q5: 'a',
+      q6: 'b'
+    };
+
+    let total = Object.keys(answers).length;
+    let answered = 0;
+
+    for (let key in answers) {
+      const selected = document.querySelector(`input[name="${key}"]:checked`);
+      if (selected) {
+        answered++;
+        if (selected.value === answers[key]) score++;
+      }
+    }
+
+    const result = document.getElementById('result');
+    if (answered === total) {
+      result.textContent = `✅ Нәтиже: ${score}/${total}`;
+      result.style.color = score >= 4 ? 'green' : 'red';
+    } else {
+      result.textContent = "⚠️ Барлық сұрақтарға жауап бер!";
+      result.style.color = 'orange';
+    }
+  }
+</script>
+
+
+  <section>
+    <h3>3️⃣ Практикалық тапсырма</h3>
+    <p>Төмендегідей құрылыммен өзіңнің <b>FAQ</b> бөлімін құр:</p>
+    <pr style="height: 100px;">
+<h1><center>осындай Авиа билет сату саитын жасаймыз</center></h1>
+    </pre>
+   <img src="1.png" alt="" height="130px" >
+</br>
+   <img src="2.png" alt="" style="margin-top: 22px;">
+
+
+
+
+</body>
+</html>
