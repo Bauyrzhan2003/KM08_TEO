@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+  <meta charset="UTF-8">
+  <title>CinemaZone — Онлайн билет брондау</title>
+  <style>
+    body {
+      font-family: "Segoe UI", sans-serif;
+      background-color: #0b0b0b;
+      color: #fff;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #202020;
+      padding: 20px;
+      text-align: center;
+      font-size: 28px;
+      font-weight: bold;
+      letter-spacing: 2px;
+    }
+
+    main {
+      padding: 20px;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    h2 {
+      color: #fdd835;
+      border-bottom: 2px solid #fdd835;
+      padding-bottom: 5px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+      background-color: #1a1a1a;
+    }
+
+    th, td {
+      border: 1px solid #333;
+      padding: 10px;
+      text-align: center;
+    }
+
+    th {
+      background-color: #fdd835;
+      color: #000;
+    }
+
+    form {
+      background-color: #1a1a1a;
+      padding: 20px;
+      margin-top: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #000;
+    }
+
+    label {
+      display: block;
+      margin-top: 10px;
+    }
+
+    input, select, button {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      border: none;
+      border-radius: 5px;
+    }
+
+    input, select {
+      background-color: #2a2a2a;
+      color: #fff;
+    }
+
+    button {
+      background-color: #fdd835;
+      color: #000;
+      font-weight: bold;
+      margin-top: 15px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #ffe657;
+    }
+
+    details {
+      margin-top: 15px;
+      background-color: #1c1c1c;
+      padding: 10px;
+      border-radius: 8px;
+    }
+
+    summary {
+      cursor: pointer;
+      color: #fdd835;
+      font-weight: bold;
+    }
+
+    footer {
+      background-color: #202020;
+      text-align: center;
+      padding: 10px;
+      margin-top: 20px;
+      font-size: 14px;
+      color: #bbb;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    🎬 CinemaZone — Онлайн билет брондау
+  </header>
+
+  <main>
+    <h2>Фильм кестесі</h2>
+    <table>
+      <tr>
+        <th>Фильм атауы</th>
+        <th>Сеанс уақыты</th>
+        <th>Зал</th>
+      </tr>
+      <tr>
+        <td>Avatar 2</td>
+        <td>18:00</td>
+        <td>1</td>
+      </tr>
+      <tr>
+        <td>Spider-Man: No Way Home</td>
+        <td>20:30</td>
+        <td>2</td>
+      </tr>
+      <tr>
+        <td>Inside Out 2</td>
+        <td>16:00</td>
+        <td>3</td>
+      </tr>
+    </table>
+
+    <form>
+      <h2>Билет брондау формасы</h2>
+
+      <label for="name">Аты-жөніңіз:</label>
+      <input type="text" id="name" placeholder="Атыңызды енгізіңіз" required>
+
+      <label for="film">Фильм таңдаңыз:</label>
+      <select id="film">
+        <option>Avatar 2</option>
+        <option>Spider-Man: No Way Home</option>
+        <option>Inside Out 2</option>
+      </select>
+
+      <label for="count">Билет саны:</label>
+      <input type="number" id="count" min="1" max="10" value="1">
+
+      <details>
+        <summary>Фильм туралы қысқаша ақпарат</summary>
+        <p>Фильмдер заманауи 3D форматында көрсетіледі. Әр сеансқа дейін 10 минут үзіліс беріледі.</p>
+      </details>
+
+      <button type="submit">🎟 Брондау</button>
+    </form>
+  </main>
+
+  <footer>
+    © 2025 CinemaZone. Барлық құқықтар қорғалған.
+  </footer>
+</body>
+</html>
