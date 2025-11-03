@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+<meta charset="UTF-8">
+<title>HTML5 жаңа мүмкіндігі: &lt;dialog&gt; тегі</title>
+<style>
+body {
+  font-family: Arial, sans-serif;
+  margin: 40px;
+  background: #f4f4f4;
+  line-height: 1.6;
+}
+h1 {
+  text-align: center;
+  color: #333;
+}
+h2 {
+  color: #0078d7;
+}
+code {
+  background: #111010;
+  padding: 2px 4px;
+  border-radius: 4px;
+color: #84ed84;
+}
+pre {
+  background: #222;
+  color: #0f0;
+  padding: 15px;
+  border-radius: 8px;
+  overflow-x: auto;
+}
+section {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 30px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.2);
+}
+</style>
+</head>
+<body>
+
+<h1>HTML5 жаңа мүмкіндігі: &lt;dialog&gt; тегі</h1>
+
+<section>
+  <h2>1. Теориялық бөлім</h2>
+  <p><b>&lt;dialog&gt;</b> тегі – HTML5 стандартындағы жаңа элемент. Ол веб-бетте диалогтық терезе (яғни ашылатын терезе) жасауға мүмкіндік береді. 
+  Бұл терезеде қолданушыға хабарлама көрсетуге, растау сұрауға немесе ақпарат енгізуге болады.</p>
+
+  <p>Басты қасиеттері:</p>
+  <ul>
+    <li><code>&lt;dialog&gt;</code> — терезенің өзін анықтайды.</li>
+    <li><code>open</code> — атрибуты терезенің автоматты түрде ашық екенін көрсетеді.</li>
+    <li><code>show()</code> және <code>showModal()</code> — JavaScript әдістері арқылы терезені ашуға болады.</li>
+    <li><code>close()</code> — терезені жабуға арналған әдіс.</li>
+  </ul>
+</section>
+
+<section>
+  <h2>2. Практикалық бөлім (мысал коды)</h2>
+  <p>Төменде батырма арқылы ашылатын және жабылатын нақты <code>&lt;dialog&gt;</code> мысалы келтірілген:</p>
+
+  <pre><code>
+&lt;!DOCTYPE html&gt;
+&lt;html lang="kk"&gt;
+&lt;head&gt;
+&lt;meta charset="UTF-8"&gt;
+&lt;title&gt;Диалог батырмамен ашу/жабу&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;button onclick="document.getElementById('terese').showModal()"&gt;
+  Диалог ашу
+&lt;/button&gt;
+
+&lt;dialog id="terese"&gt;
+  &lt;p&gt;Бұл — нақты &amp;lt;dialog&amp;gt; терезесі!&lt;/p&gt;
+  &lt;button onclick="document.getElementById('terese').close()"&gt;
+    Жабу
+  &lt;/button&gt;
+&lt;/dialog&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+  </code></pre>
+</section>
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+<meta charset="UTF-8">
+<title>Диалог батырмамен ашу/жабу</title>
+</head>
+<body>
+
+<button onclick="document.getElementById('terese').showModal()">Диалог ашу</button>
+
+<dialog id="terese">
+  <p>Бұл — нақты &lt;dialog&gt; терезесі!</p>
+  <button onclick="document.getElementById('terese').close()">Жабу</button>
+</dialog>
+
+</body>
+</html>
+</br>
+<section>
+  <h2>3. Түсіндірме</h2>
+  <ul>
+    <li><code>&lt;button&gt;</code> – диалогты ашатын батырма.</li>
+    <li><code>onclick="document.getElementById('terese').showModal()"</code> – батырмаға басқанда “terese” атты диалог ашылады.</li>
+    <li><code>&lt;dialog id="terese"&gt;</code> – диалогтың өзін белгілейді.</li>
+    <li><code>showModal()</code> – диалогты экранның ортасына шығарып, артқы фонды бұлыңғыр етеді.</li>
+    <li><code>close()</code> – диалог терезесін жабады.</li>
+  </ul>
+</section>
+
+<section>
+  <h2>4. Қорытынды</h2>
+  <p><b>&lt;dialog&gt;</b> тегі — веб-интерфейстерде қолданушыға хабарламаларды, ескерту терезелерін немесе форма енгізу аймақтарын көрсету үшін ыңғайлы HTML5 құралы.
+  Бұл тег сайттың интерактивтілігін арттырып, қолданушы тәжірибесін жақсартады.</p>
+</section>
+
+</body>
+</html>
