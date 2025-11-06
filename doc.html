@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>EasyCook — Рецепт генераторы</title>
+<style>
+  body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    background: #fff8e7;
+  }
+  header {
+    background: #ff7f11;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 18px;
+  }
+  header h2 { margin: 0; font-size: 20px; }
+  header button {
+    background: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+  main { padding: 20px; text-align: center; }
+
+  input, select, button {
+    padding: 10px;
+    font-size: 16px;
+    margin: 5px;
+    border-radius: 6px;
+  }
+  input, select {
+    border: 2px solid #ffa94d;
+    width: 80%;
+    max-width: 400px;
+  }
+  button {
+    background: #ff7f11;
+    color: black;
+    border: none;
+    cursor: pointer;
+  }
+
+  .auth-box, .main-page, .profile-page {
+    display: none;
+    text-align: center;
+  }
+  .recipe {
+    background: #fff;
+    padding: 15px;
+    margin: 15px auto;
+    width: 90%;
+    max-width: 500px;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    text-align: left;
+  }
+  .recipe h3 { color: #ff7f11; margin-top: 0; }
+
+  /* Профиль карточка стилі */
+  .profile-card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    padding: 20px;
+    max-width: 400px;
+    margin: 0 auto;
+    text-align: left;
+  }
+  .profile-card h3 {
+    color: #ff7f11;
+    text-align: center;
+  }
+  .profile-card p {
+    margin: 8px 0;
+    font-size: 15px;
+  }
+
+  @media (max-width:600px) {
+    header h2 { font-size: 18px; }
+    input { width: 90%; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h2>🥘 EasyCook</h2>
+  <div id="navBtns">
+    <button id="toProfile" onclick="showProfile()">Профиль</button>
+    <button id="logoutBtn" onclick="logout()">Шығу</button>
+  </div>
+</header>
+
+<main>
+
+  <!-- LOGIN / REGISTER -->
+  <div class="auth-box" id="authBox">
+    <h2 id="authTitle">Кіру</h2>
+    <div id="extraFields" style="display:none;">
+      <input type="text" id="firstName" placeholder="Аты"><br>
+      <input type="text" id="lastName" placeholder="Тегі"><br>
+      <input type="text" id="middleName" placeholder="Әкесінің аты"><br>
+      <label>Туған күні:</label><br>
+      <input type="date" id="birthDate"><br>
+      <label>Жынысы:</label><br>
+      <select id="gender">
+        <option value="">Таңдаңыз</option>
+        <option value="Ер">Ер</option>
+        <option value="Әйел">Әйел</option>
+      </select><br>
+      <label>Жанұя жағдайы:</label><br>
+      <select id="married">
+        <option value="Жоқ">Жоқ</option>
+        <option value="Иә">Иә</option>
+      </select><br>
+      <input type="number" id="children" placeholder="Балалар саны (егер бар болса)" min="0"><br>
+    </div>
+
+    <input type="email" id="authEmail" placeholder="Email"><br>
+    <input type="password" id="authPass" placeholder="Құпия сөз"><br>
+    <button onclick="authAction()">Кіру</button>
+    <p id="switchText">Тіркелмегенсіз бе?
+      <a href="#" onclick="switchAuth(true)">Тіркелу</a>
+    </p>
+  </div>
+
+  <!-- MAIN PAGE -->
+  <div class="main-page" id="mainPage">
+    <h2>Қолыңда бар өнімдерді жаз 👇</h2>
+    <input id="ingredients" type="text" placeholder="Мысалы: жұмыртқа, ұн, сүт" />
+    <br>
+    <button onclick="findRecipe()">Рецепт табу</button>
+    <div id="result"></div>
+  </div>
+
+  <!-- PROFILE PAGE -->
+  <div class="profile-page" id="profilePage">
+    <h2>👤 Менің профилім</h2>
+    <div class="profile-card" id="profileCard"></div>
+    <button onclick="showMain()">Басты бетке</button>
+  </div>
+
+</main>
+
+<script>
+// ==== MOCK РЕЦЕПТ ДЕРЕКТЕРІ ====
+const recipes = [
+  { name: "Блинчиктер", ingredients: ["жұмыртқа","ұн","сүт"],
+    steps: ["Барлық өнімдерді араластыр.","Қуыру табасында екі жағын пісір.","Бал немесе тосаппен бірге же."] },
+  { name: "Жұмыртқа омлеті", ingredients: ["жұмыртқа","сүт","тұз"],
+    steps: ["Жұмыртқаны сүт және тұзбен араластыр.","Табада баяу отта қуырып пісір."] },
+  { name: "Макарон ірімшікпен", ingredients: ["макарон","ірімшік","сары май"],
+    steps: ["Макаронды пісіріп, сүз.","Сары май мен ірімшік қос.","Жақсылап араластыр."] },
+  { name: "Смузи (банан + сүт)", ingredients: ["банан","сүт"],
+    steps: ["Банан мен сүтті блендерге сал.","Біркелкі болғанша араластыр."] },
+  { name: "Сэндвич", ingredients: ["нан","ірімшік","ет"],
+    steps: ["Нанның арасына ірімшік пен ет қой.","Тостерде немесе табада қыздыр."] }
+];
+
+// ==== DOM элементтер ====
+const authBox = document.getElementById("authBox");
+const mainPage = document.getElementById("mainPage");
+const profilePage = document.getElementById("profilePage");
+const authTitle = document.getElementById("authTitle");
+const switchText = document.getElementById("switchText");
+const extraFields = document.getElementById("extraFields");
+const profileCard = document.getElementById("profileCard");
+
+let isRegister = false;
+
+// ==== БЕТТЕРДІ АУЫСТЫРУ ====
+function showMain() {
+  authBox.style.display = "none";
+  profilePage.style.display = "none";
+  mainPage.style.display = "block";
+}
+function showProfile() {
+  const user = JSON.parse(localStorage.getItem("user"));
+  if (!user) return showAuth();
+  profileCard.innerHTML = `
+    <h3>${user.lastName} ${user.firstName} ${user.middleName || ""}</h3>
+    <p><b>📧 Email:</b> ${user.email}</p>
+    <p><b>🎂 Туған күні:</b> ${user.birthDate || "—"}</p>
+    <p><b>🚻 Жынысы:</b> ${user.gender || "—"}</p>
+    <p><b>💍 Жанұя жағдайы:</b> ${user.married || "—"}</p>
+    <p><b>👶 Балалар саны:</b> ${user.children || 0}</p>
+  `;
+  mainPage.style.display = "none";
+  authBox.style.display = "none";
+  profilePage.style.display = "block";
+}
+function showAuth() {
+  authBox.style.display = "block";
+  mainPage.style.display = "none";
+  profilePage.style.display = "none";
+}
+
+// ==== ТІРКЕЛУ / КІРУ ====
+function switchAuth(reg) {
+  isRegister = reg;
+  if (reg) {
+    authTitle.textContent = "Тіркелу";
+    extraFields.style.display = "block";
+    switchText.innerHTML = 'Аккаунтың бар ма? <a href="#" onclick="switchAuth(false)">Кіру</a>';
+  } else {
+    authTitle.textContent = "Кіру";
+    extraFields.style.display = "none";
+    switchText.innerHTML = 'Тіркелмегенсіз бе? <a href="#" onclick="switchAuth(true)">Тіркелу</a>';
+  }
+}
+
+function authAction() {
+  const email = document.getElementById("authEmail").value.trim();
+  const pass = document.getElementById("authPass").value.trim();
+  if (!email || !pass) return alert("Email мен құпия сөзді толтырыңыз!");
+
+  if (isRegister) {
+    const firstName = document.getElementById("firstName").value.trim();
+    const lastName = document.getElementById("lastName").value.trim();
+    const middleName = document.getElementById("middleName").value.trim();
+    const birthDate = document.getElementById("birthDate").value;
+    const gender = document.getElementById("gender").value;
+    const married = document.getElementById("married").value;
+    const children = document.getElementById("children").value || 0;
+
+    if (!firstName || !lastName || !birthDate || !gender)
+      return alert("Барлық маңызды өрістерді толтырыңыз!");
+
+    const user = { email, pass, firstName, lastName, middleName, birthDate, gender, married, children };
+    localStorage.setItem("user", JSON.stringify(user));
+    alert("Тіркелу сәтті өтті!");
+    showMain();
+  } else {
+    const user = JSON.parse(localStorage.getItem("user"));
+    if (!user) return alert("Аккаунт табылмады. Тіркеліңіз.");
+    if (user.email === email && user.pass === pass) {
+      alert("Сәтті кірдіңіз!");
+      showMain();
+    } else {
+      alert("Қате email немесе құпия сөз!");
+    }
+  }
+}
+
+// ==== ШЫҒУ ====
+function logout() {
+  localStorage.removeItem("user");
+  alert("Сіз жүйеден шықтыңыз!");
+  showAuth();
+}
+
+// ==== РЕЦЕПТ ТАБУ ====
+function findRecipe() {
+  const input = document.getElementById("ingredients").value.toLowerCase();
+  const userIngredients = input.split(",").map(i => i.trim());
+  const found = recipes.filter(r =>
+    r.ingredients.some(ing => userIngredients.includes(ing))
+  );
+  const resultDiv = document.getElementById("result");
+  resultDiv.innerHTML = "";
+
+  if (found.length === 0) {
+    resultDiv.innerHTML = "<p>😢 Сәйкес рецепт табылмады.</p>";
+    return;
+  }
+
+  found.forEach(r => {
+    const div = document.createElement("div");
+    div.className = "recipe";
+    div.innerHTML = `
+      <h3>${r.name}</h3>
+      <strong>Қажетті өнімдер:</strong>
+      <ul>${r.ingredients.map(i => `<li>${i}</li>`).join("")}</ul>
+      <strong>Дайындау тәсілі:</strong>
+      <ul>${r.steps.map(s => `<li>${s}</li>`).join("")}</ul>
+    `;
+    resultDiv.appendChild(div);
+  });
+}
+
+// ==== БАСТАПҚЫ БЕТ ====
+window.onload = () => {
+  const user = JSON.parse(localStorage.getItem("user"));
+  if (user) showMain();
+  else showAuth();
+};
+</script>
+
+</body>
+</html>
