@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Hover эффектісі - Лекция және Тапсырмалар</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <h1>CSS Hover эффектісі</h1>
+    <p>Бұл бетте лекция, мысалдар және практикалық тапсырмалар бар.</p>
+</header>
+
+<main>
+    <!-- Лекция бөлімі -->
+    <section class="lecture">
+        <h2>1. Лекция: CSS hover эффектісі</h2>
+
+        <h3>1.1 hover деген не?</h3>
+        <p>
+            <strong>hover</strong> – CSS псевдосыныбы, курсор (тінтуір) элементтің үстіне келгенде стильді өзгертуді қамтамасыз етеді.
+            <br>Пайдаланылады: сілтемелер (<code>&lt;a&gt;</code>), батырмалар (<code>&lt;button&gt;</code>), блоктар (<code>&lt;div&gt;</code>), суреттер (<code>&lt;img&gt;</code>).
+        </p>
+
+        <h3>1.2 hover қасиеттері</h3>
+        <ul>
+            <li>Түсін өзгерту (color / background-color)</li>
+            <li>Шекара түсін өзгерту (border-color)</li>
+            <li>Қаріп өлшемін өзгерту (font-size)</li>
+            <li>Трансформациялар (scale, rotate)</li>
+            <li>Транзишн (transition) қосу арқылы жұмсақ ауысу</li>
+        </ul>
+
+        <h3>1.3 Синтаксис</h3>
+        <pre>
+селектор:hover {
+    қасиет: мән;
+}
+        </pre>
+
+        <h3>1.4 Мысалдар</h3>
+
+        <p><strong>Мысалы 1:</strong> Сілтемеге түсін өзгерту</p>
+        <pre>
+a {
+    color: blue;
+    text-decoration: none;
+}
+a:hover {
+    color: red;
+}
+        </pre>
+
+        <p><strong>Мысалы 2:</strong> Батырманы үлкейту</p>
+        <pre>
+button {
+    background-color: green;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+button:hover {
+    transform: scale(1.1);
+}
+        </pre>
+
+        <p><strong>Мысалы 3:</strong> Блокқа фон қосу</p>
+        <pre>
+div.card {
+    width: 200px;
+    height: 150px;
+    background-color: #f0f0f0;
+    border: 2px solid #333;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+div.card:hover {
+    background-color: #cceeff;
+    border-color: #007BFF;
+}
+        </pre>
+
+        <h3>1.5 Практикалық кеңестер</h3>
+        <ul>
+            <li>Hover тек визуалды өзгеріс үшін қолданылады.</li>
+            <li>Көп қолданылатын қасиеттер: <code>color</code>, <code>background-color</code>, <code>border</code>, <code>box-shadow</code>, <code>transform</code>.</li>
+            <li><code>transition</code> қасиетімен қосса, өзгеріс жұмсақ болады.</li>
+            <li>Hover мобильді құрылғыларда тек «басқанда» көрінеді, сондықтан тек «тінтуірге арналған» эффекттер үшін.</li>
+        </ul>
+    </section>
+
+    <!-- Практикалық тапсырмалар -->
+    <section class="tasks">
+        <h2>2. Практикалық тапсырмалар</h2>
+
+        <h3>Тапсырма 1: Сілтемелер</h3>
+        <nav class="task-links">
+            <a href="#">Басты бет</a>
+            <a href="#">Қызметтер</a>
+            <a href="#">Байланыс</a>
+        </nav>
+
+        <h3>Тапсырма 2: Батырма</h3>
+        <button class="order-btn">Тапсырыс беру</button>
+
+        <h3>Тапсырма 3: Блоктар</h3>
+        <div class="cards">
+            <div class="card">Блок 1</div>
+            <div class="card">Блок 2</div>
+        </div>
+    </section>
+</main>
+
+<script src="script.js">
+// Hover кезінде хабар шығару мысалы (оқушыларға қызықты ету үшін)
+document.querySelectorAll('.card').forEach(card => {
+    card.addEventListener('mouseenter', () => {
+        console.log(card.textContent + " үстінде hover!");
+    });
+});
+
+</script>
+<style>
+/* Жалпы стильдер */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    text-align: center;
+    background-color: #007BFF;
+    color: white;
+    padding: 30px 0;
+}
+
+header h1 {
+    margin: 0 0 10px 0;
+    font-size: 36px;
+}
+
+header p {
+    margin: 0;
+    font-size: 18px;
+}
+
+main {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 0 20px;
+}
+
+/* Лекция стилі */
+.lecture h2, .tasks h2 {
+    color: #007BFF;
+    margin-top: 30px;
+}
+
+.lecture pre {
+    background-color: #f0f0f0;
+    padding: 10px;
+    border-left: 4px solid #007BFF;
+    overflow-x: auto;
+}
+
+/* Тапсырма 1 - Сілтемелер */
+.task-links {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.task-links a {
+    margin: 0 15px;
+    text-decoration: none;
+    color: #007BFF;
+    font-weight: bold;
+    font-size: 18px;
+    transition: color 0.3s, text-decoration 0.3s;
+}
+
+.task-links a:hover {
+    color: #FF5733;
+    text-decoration: underline;
+}
+
+/* Тапсырма 2 - Батырма */
+.order-btn {
+    display: block;
+    margin: 20px auto;
+    padding: 15px 30px;
+    font-size: 18px;
+    background-color: green;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.3s, background-color 0.3s;
+}
+
+.order-btn:hover {
+    background-color: darkgreen;
+    transform: scale(1.1);
+}
+
+/* Тапсырма 3 - Блоктар */
+.cards {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin: 20px 0;
+}
+
+.card {
+    width: 200px;
+    height: 150px;
+    background-color: #ffffff;
+    border: 2px solid #333;
+    padding: 20px;
+    text-align: center;
+    line-height: 110px;
+    font-size: 20px;
+    border-radius: 10px;
+    transition: background-color 0.3s, border-color 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+    background-color: #cceeff;
+    border-color: #007BFF;
+    box-shadow: 4px 4px 15px rgba(0,0,0,0.2);
+}
+
+</style>
+</body>
+</html>
