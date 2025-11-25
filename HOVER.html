@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+<meta charset="UTF-8">
+<title>Псевдокласстар арқылы батырмаларды безендіру</title>
+<style>
+    body {
+        font-family: Arial;
+        padding: 20px;
+        line-height: 1.6;
+    }
+    h2 { margin-top: 40px; color: #333; }
+
+    button {
+        padding: 10px 20px;
+        font-size: 16px;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: 0.3s;
+        margin: 10px 0;
+    }
+    .hover-btn:hover {
+        background: #3498db;
+        color: #fff;
+    }
+    .active-btn:active {
+        background: #2ecc71;
+        transform: scale(0.95);
+        color: white;
+    }
+    .focus-btn:focus {
+        outline: 3px solid red;
+        background: yellow;
+    }
+    .disabled-btn:disabled {
+        background: #aaa;
+        color: #555;
+        cursor: not-allowed;
+    }
+        body {
+        font-family: "Segoe UI", Arial, sans-serif;
+        padding: 30px;
+        line-height: 1.7;
+        background: #f4f6f9;
+        color: #333;
+        max-width: 900px;
+        margin: auto;
+    }
+
+    h1 {
+        text-align: center;
+        font-size: 32px;
+        margin-bottom: 30px;
+        color: #222;
+    }
+
+    h2 {
+        margin-top: 40px;
+        padding-bottom: 8px;
+        border-bottom: 2px solid #ddd;
+        color: #333;
+    }
+
+    pre {
+        background: #1e1e1e;
+        color: #00ff9d;
+        padding: 15px;
+        border-radius: 8px;
+        overflow-x: auto;
+        font-size: 15px;
+    }
+
+    b {
+        font-size: 18px;
+    }
+
+    /* Батырмалардың жалпы стилі */
+    button {
+        padding: 12px 22px;
+        font-size: 17px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: 0.3s;
+        margin: 10px 0;
+        background: #e6e6e6;
+    }
+
+    /* 1) :hover */
+    .hover-btn:hover {
+        background: #3498db;
+        color: #fff;
+        box-shadow: 0 4px 10px rgba(52, 152, 219, 0.4);
+    }
+
+    /* 2) :active */
+    .active-btn:active {
+        background: #2ecc71;
+        transform: scale(0.92);
+        color: #fff;
+        box-shadow: 0 4px 12px rgba(46, 204, 113, 0.5);
+    }
+
+    /* 3) :focus */
+    .focus-btn:focus {
+        outline: 4px solid rgba(255, 0, 0, 0.6);
+        background: #fff176;
+        box-shadow: 0 4px 12px rgba(255, 193, 7, 0.4);
+    }
+
+    /* 4) :disabled */
+    .disabled-btn:disabled {
+        background: #bfbfbf;
+        color: #555;
+        cursor: not-allowed;
+        border: 2px dashed #999;
+    }
+
+    /* Тапсырмаларға стиль */
+    p, .task {
+        background: #ffffff;
+        padding: 15px;
+        border-radius: 8px;
+        border-left: 5px solid #3498db;
+        margin: 10px 0 20px;
+    }
+
+</style>
+</head>
+<body>
+
+<h1>Псевдокласстар арқылы батырмаларды безендіру</h1>
+
+<!-- ============================ -->
+<h2>1) :hover — Батырманың үстіне курсор келгенде</h2>
+
+<b>Теория:</b><br>
+:hover псевдоклассы элементтің үстіне курсор келген кезде стилін өзгертеді.
+
+<br><br>
+<b>Код:</b>
+<pre>
+button:hover {
+    background: #3498db;
+    color: white;
+}
+</pre>
+
+<b>Мысалы:</b><br>
+<button class="hover-btn">Үстіне апар</button>
+
+<b>Тапсырма:</b>  
+Өзің 50px ені бар қызыл батырма жасап, hover кезінде жасылға ауыссын.
+
+
+<!-- ============================ -->
+<h2>2) :active — Батырманы басқан сәт</h2>
+
+<b>Теория:</b><br>
+:active батырмаға басқан мезетте (клик кезінде) жұмыс істейді.
+
+<br><br>
+<b>Код:</b>
+<pre>
+button:active {
+    background: #2ecc71;
+    transform: scale(0.95);
+}
+</pre>
+
+<b>Мысалы:</b><br>
+<button class="active-btn">Басып көр</button>
+
+<b>Тапсырма:</b>  
+Батырмаға басқанда 5px төмен түсетін эффект қос.
+
+
+<!-- ============================ -->
+<h2>3) :focus — Батырма фокус алған кезде</h2>
+
+<b>Теория:</b><br>
+:focus батырма пернетақтамен таңдалғанда немесе басылғанда қосылады (TAB арқылы).
+
+<br><br>
+<b>Код:</b>
+<pre>
+button:focus {
+    outline: 3px solid red;
+    background: yellow;
+}
+</pre>
+
+<b>Мысалы:</b><br>
+<button class="focus-btn">Фокус бер (Tab)</button>
+
+<b>Тапсырма:</b>  
+Фокус түскенде батырма көк түске боялсын.
+
+
+<!-- ============================ -->
+<h2>4) :disabled — Қолдануға болмайтын батырма</h2>
+
+<b>Теория:</b><br>
+:disabled күйі батырма бұғатталған кезде қолданылады.
+
+<br><br>
+<b>Код:</b>
+<pre>
+button:disabled {
+    background: #aaa;
+    color: #555;
+    cursor: not-allowed;
+}
+</pre>
+
+<b>Мысалы:</b><br>
+<button disabled class="disabled-btn">Өшірілген</button>
+
+<b>Тапсырма:</b>  
+ disabled батырмаға қызыл рамка қой.
+
+
+</body>
+</html>
