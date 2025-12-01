@@ -1,0 +1,202 @@
+<!--
+Файл: adaptive_templates.html
+Бұл құжатта екі HTML шаблон бар:
+1) no-media.html  — бірдей дизайн, бірақ media queries жоқ (мобильде сығылып көрінеді)
+2) with-media.html — сол дизайн, бірақ media queries арқылы мобильдіге бейімделеді
+Өзгерістерді оңай көру үшін екі блок та бірдей HTML құрылымын пайдаланады: .site-container, header, main, footer.
+-->
+
+<!-- ============================================================ -->
+<!-- 1) no-media.html — Media Queries жоқ (responsive жоқ)     -->
+<!-- ============================================================ -->
+
+<!doctype html>
+<html lang="kk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Бизнес Жоба — Media Version</title>
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f5f5f5;
+}
+
+/* HEADER */
+header {
+    background: #111;
+    color: white;
+    padding: 20px 40px;
+    position: relative;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+nav ul {
+    display: flex;
+    gap: 30px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    cursor: pointer;
+}
+
+/* HAMBURGER */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 4px;
+    cursor: pointer;
+}
+
+.hamburger div {
+    width: 28px;
+    height: 3px;
+    background: white;
+    border-radius: 5px;
+}
+
+/* MOBILE MENU (HIDDEN) */
+.mobile-menu {
+    display: none;
+    flex-direction: column;
+    background: #222;
+    padding: 15px 20px;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+.mobile-menu li {
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    color: white;
+}
+
+.mobile-menu li:last-child {
+    border-bottom: none;
+}
+
+/* HERO */
+.hero {
+    width: 100%;
+    max-width: 1200px;
+    margin: 40px auto;
+    background: white;
+    padding: 50px;
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+.hero h1 { font-size: 34px; }
+.hero p { width: 600px; font-size: 18px; margin-top: 10px; color: #444; }
+
+.btn {
+    margin-top: 20px;
+    background: #4b7bec;
+    color: white;
+    border: none;
+    padding: 14px 28px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+/* SERVICES */
+.services {
+    max-width: 1200px;
+    margin: 40px auto;
+    display: flex;
+    gap: 20px;
+}
+
+.card {
+    background: white;
+    padding: 20px;
+    width: 380px;
+    border-radius: 10px;
+    box-shadow: 0 8px 18px rgba(0,0,0,0.07);
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    color: #777;
+    background: #eee;
+    margin-top: 40px;
+}
+
+/* ============ MEDIA QUERIES ============ */
+@media (max-width: 900px) {
+    .hero { padding: 30px; }
+    .hero p { width: 100%; }
+    .services { flex-direction: column; }
+    .card { width: 100%; }
+}
+
+@media (max-width: 700px) {
+    nav ul { display: none; }
+    .hamburger { display: flex; }
+    .hero { padding: 22px; }
+}
+
+/* When menu is opened */
+.mobile-menu.active { display: flex; }
+</style>
+</head>
+<body>
+
+<header>
+    <nav>
+        <div class="logo">BizPro</div>
+        <ul>
+            <li>Басты бет</li>
+            <li>Қызметтер</li>
+            <li>Байланыс</li>
+        </ul>
+        
+        <div class="hamburger" onclick="toggleMenu()">
+            <div></div><div></div><div></div>
+        </div>
+    </nav>
+
+    <ul class="mobile-menu" id="mobileMenu">
+        <li>Басты бет</li>
+        <li>Қызметтер</li>
+        <li>Байланыс</li>
+    </ul>
+</header>
+
+<div class="hero">
+    <h1>Бизнесіңізді жаңа деңгейге көтеріңіз</h1>
+    <p>Бұл медиасы бар адаптив нұсқа. Телефонға айналғанда мәзір 3 сызықтың ішіне жиналады.</p>
+    <button class="btn">Толығырақ</button>
+</div>
+
+<div class="services">
+    <div class="card"><h3>Маркетинг</h3><p>Жарнама стратегиялары</p></div>
+    <div class="card"><h3>Дизайн</h3><p>Кәсіби UI/UX</p></div>
+    <div class="card"><h3>IT Шешімдер</h3><p>Жеке веб-жоба</p></div>
+</div>
+
+<footer>© 2025 BizPro Agency</footer>
+
+<script>
+function toggleMenu() {
+    document.getElementById('mobileMenu').classList.toggle('active');
+}
+</script>
+
+</body>
+</html>
