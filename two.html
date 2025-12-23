@@ -1,250 +1,217 @@
 <!DOCTYPE html>
 <html lang="kk">
 <head>
-  <meta charset="UTF-8">
-  <title>Мәтіндерді, тізімдерді пішімдеу / Форматирование текста и списков</title>
-  <style>
-    body {
-      font-family: "Segoe UI", sans-serif;
-      background: linear-gradient(to right, #f8f9fa, #eef2f3);
-      color: #222;
-      line-height: 1.6;
-      margin: 40px auto;
-      max-width: 900px;
-      padding: 20px 40px;
-      border-radius: 20px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.1);
-    }
-    h1, h2 {
-      text-align: center;
-      color: #0056b3;
-    }
-    h3 {
-      margin-top: 30px;
-      color: #444;
-    }
-    .lang {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      margin-bottom: 20px;
-    }
-    .lang button {
-      background: #0056b3;
-      color: #fff;
-      border: none;
-      padding: 8px 16px;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: 0.3s;
-      font-weight: bold;
-    }
-    .lang button:hover {
-      background: #003d80;
-    }
-    .content {
-      display: none;
-      animation: fadeIn 0.6s ease-in-out;
-    }
-    .content.active {
-      display: block;
-    }
-    pre {
-      background: #f4f4f4;
-      padding: 10px;
-      border-radius: 8px;
-    }
-    ul {
-      margin-left: 30px;
-    }
-    ol {
-      margin-left: 30px;
-    }
-    .task {
-      background: #e9f7ef;
-      border-left: 6px solid #28a745;
-      padding: 15px;
-      border-radius: 10px;
-      margin-top: 30px;
-    }
-    .test {
-      background: #fff3cd;
-      border-left: 6px solid #ffc107;
-      padding: 15px;
-      border-radius: 10px;
-      margin-top: 30px;
-    }
-    @keyframes fadeIn {
-      from {opacity: 0;}
-      to {opacity: 1;}
-    }
-  </style>
+<meta charset="UTF-8">
+<title>Frontend RK – Auto Score</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #020617;
+  color: white;
+}
+
+h3 { margin: 5px 0; }
+
+.main {
+  display: flex;
+  flex-wrap: wrap;
+  height: 75vh;
+}
+
+.sample, .editor {
+  flex: 1 1 500px;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+iframe {
+  width: 100%;
+  height: 100%;
+  border: 2px solid white;
+  background: white;
+}
+
+textarea {
+  width: 100%;
+  height: 100%;
+  background: #0f172a;
+  color: #22c55e;
+  font-size: 14px;
+  border: none;
+  outline: none;
+  resize: none;
+}
+
+.bottom {
+  padding: 10px;
+  border-top: 1px solid #1e293b;
+  font-size: 15px;
+  margin-top: 35px;
+}
+
+.timer {
+  float: right;
+  font-weight: bold;
+}
+
+.score {
+  font-weight: bold;
+  color: #22c55e;
+}
+</style>
 </head>
-<body>
-  <div class="lang">
-    <button onclick="showLang('kk')">Қазақша</button>
-    <button onclick="showLang('ru')">Русский</button>
+
+<body oncontextmenu="return false">
+
+<div class="main">
+
+  <!-- ДАЙЫН ҮЛГІ -->
+  <div class="sample">
+    <h3>Дайын үлгі (көшіру)</h3>
+    <iframe srcdoc="
+    <style>
+  body { margin: 0; font-family: Arial; }
+  header { background: blue; padding: 22px; color: white; }
+  nav a { 
+    margin-right: 15px; 
+    color: white; 
+    text-decoration: none; 
+    transition: color 0.3s, transform 0.2s; /* анимация үшін */
+  }
+  nav a:hover {
+    color: #22c55e; /* hover болғанда түс өзгереді */
+    transform: scale(1.1); /* сәл үлкейту */
+  }
+  section { padding: 223px; text-align: center; }
+  button { 
+    padding: 10px 20px; 
+    background: #22c55e; 
+    border: none; 
+    color: white;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s; /* анимация үшін */
+  }
+  button:hover {
+    background: #16a34a; /* hover болғанда түс өзгереді */
+    transform: scale(1.05); /* сәл үлкейту */
+  }
+  button:active {
+    transform: scale(0.95); /* басылғандай эффект */
+  }
+  footer { background: blue; color: white; text-align: center; padding: 10px; }
+  @media(max-width:600px){section{padding:20px}}
+</style>
+
+<header>
+  <nav>
+    <a>Home</a><a>About</a><a>Contact</a>
+  </nav>
+</header>
+<section>
+  <h1>IT Company</h1>
+  <p>AGKSIT Session</p>
+  <button>Get Started</button>
+</section>
+<footer>© 2025</footer>
+
+    "></iframe>
   </div>
 
-  <!-- Қазақша нұсқа -->
-  <div class="content active" id="kk">
-    <h1>7. Теория сабағы</h1>
-    <h2>Тақырып: Мәтіндерді, тізімдерді пішімдеу</h2>
-
-    <h3>Мәтінді пішімдеу тегтері</h3>
-    <p><b>&lt;b&gt;</b> — мәтінді жуан қылып көрсетеді.<br>
-    Мысалы: <b>Маңызды ақпарат</b></p>
-
-    <p><b>&lt;i&gt;</b> — мәтінді курсивпен (қисайтып) көрсетеді.<br>
-    Мысалы: <i>Жаңа бөлім</i></p>
-
-    <p><b>&lt;u&gt;</b> — мәтінді астын сызады.<br>
-    Мысалы: <u>Төмендегі мәлімет</u></p>
-
-    <p><b>&lt;mark&gt;</b> — мәтінді сары түспен ерекшелейді.<br>
-    Мысалы: <mark>Маңызды сөз</mark></p>
-
-    <p><b>&lt;small&gt;</b> — мәтінді кішірейтіп көрсетеді.<br>
-    Мысалы: <small>Қосымша ақпарат</small></p>
-
-    <p><b>&lt;sub&gt;</b> және <b>&lt;sup&gt;</b> — төменгі және жоғарғы индекс.<br>
-    Мысалы: H<sub>2</sub>O, X<sup>2</sup></p>
-
-    <h3>Тізімдерді пішімдеу тегтері</h3>
-
-    <p><b>1. Реттелмеген тізім (unordered list)</b> – <code>&lt;ul&gt;</code> және <code>&lt;li&gt;</code></p>
-    <pre>
-&lt;ul&gt;
-  &lt;li&gt;HTML&lt;/li&gt;
-  &lt;li&gt;CSS&lt;/li&gt;
-  &lt;li&gt;JavaScript&lt;/li&gt;
-&lt;/ul&gt;
-    </pre>
-
-    <p><b>2. Реттелген тізім (ordered list)</b> – <code>&lt;ol&gt;</code> және <code>&lt;li&gt;</code></p>
-    <pre>
-&lt;ol&gt;
-  &lt;li&gt;Бірінші&lt;/li&gt;
-  &lt;li&gt;Екінші&lt;/li&gt;
-  &lt;li&gt;Үшінші&lt;/li&gt;
-&lt;/ol&gt;
-    </pre>
-
-    <p><b>3. Анықтама тізімі (description list)</b> – <code>&lt;dl&gt;</code>, <code>&lt;dt&gt;</code>, <code>&lt;dd&gt;</code></p>
-    <pre>
-&lt;dl&gt;
-  &lt;dt&gt;HTML&lt;/dt&gt;
-  &lt;dd&gt;Гипермәтіндік белгілеу тілі&lt;/dd&gt;
-&lt;/dl&gt;
-    </pre>
-
-    <div class="test">
-      <h3>8. Мини-тест</h3>
-      <ol>
-        <li>&lt;b&gt; тегі не үшін қолданылады?<br>a) Мәтінді қисайту үшін<br>b) Мәтінді жуан қылу үшін<br>c) Тізім жасау үшін</li>
-        <li>Қай тег тізім элементін белгілейді?<br>a) &lt;ul&gt;<br>b) &lt;li&gt;<br>c) &lt;ol&gt;</li>
-        <li>&lt;mark&gt; тегі не істейді?<br>a) Мәтінді өшіреді<br>b) Мәтінді ерекшелейді<br>c) Мәтінді кішірейтеді</li>
-        <li>Реттелген тізімнің бастапқы тегі:<br>a) &lt;ul&gt;<br>b) &lt;ol&gt;<br>c) &lt;li&gt;</li>
-        <li>Төменгі индекс жасау үшін қолданылатын тег:<br>a) &lt;sub&gt;<br>b) &lt;sup&gt;<br>c) &lt;small&gt;</li>
-        <li>Қай тег мәтінді курсивпен көрсетуге арналған?<br>a) &lt;b&gt;<br>b) &lt;u&gt;<br>c) &lt;i&gt;</li>
-      </ol>
-    </div>
-
-    <div class="task">
-      <h3>9. Практикалық жұмыс</h3>
-      <p>Тақырып: <b>«Менің сүйікті пәндерім»</b> атты веб-бет құру</p>
-      <ul>
-        <li><b>&lt;h1&gt;</b> арқылы беттің тақырыбын жазыңыз.</li>
-        <li>Өз атыңызды және оқу тобыңызды көрсетіңіз.</li>
-        <li><b>&lt;b&gt;</b>, <b>&lt;i&gt;</b>, <b>&lt;mark&gt;</b> тегтерін қолданып сөйлем пішімдеңіз.</li>
-        <li>Сүйікті пәндеріңіздің тізімін <b>&lt;ul&gt;</b> немесе <b>&lt;ol&gt;</b> арқылы жасаңыз.</li>
-        <li>Анықтама тізімін <b>&lt;dl&gt;</b> арқылы қосыңыз (мысалы: HTML — вебті белгілеу тілі).</li>
-      </ul>
-    </div>
+  <!-- СТУДЕНТ КОДЫ -->
+  <div class="editor">
+    <h3>Сенің кодың</h3>
+    <textarea id="code" placeholder="HTML + CSS осы жерге жазылады"></textarea>
   </div>
 
-  <!-- Русская версия -->
-  <div class="content" id="ru">
-    <h1>7. Урок теории</h1>
-    <h2>Тема: Форматирование текста и списков</h2>
+</div>
 
-    <h3>Теги форматирования текста</h3>
-    <p><b>&lt;b&gt;</b> — делает текст жирным.<br>
-    Пример: <b>Важная информация</b></p>
+<div class="bottom">
+  ⏱ Уақыт: <span class="timer" id="timer">25:00</span><br>
+  🎯 Балл: <span class="score" id="score">0 / 90</span><br>
+</div>
 
-    <p><b>&lt;i&gt;</b> — делает текст курсивом.<br>
-    Пример: <i>Новый раздел</i></p>
+<script>
+document.onkeydown = e => (e.ctrlKey || e.keyCode === 123) ? false : true;
 
-    <p><b>&lt;u&gt;</b> — подчёркивает текст.<br>
-    Пример: <u>Следующая информация</u></p>
+const textarea = document.getElementById("code");
+const scoreEl = document.getElementById("score");
 
-    <p><b>&lt;mark&gt;</b> — выделяет текст жёлтым цветом.<br>
-    Пример: <mark>Ключевое слово</mark></p>
+let finished = false;
 
-    <p><b>&lt;small&gt;</b> — уменьшает размер текста.<br>
-    Пример: <small>Дополнительная информация</small></p>
+// 🔍 АВТО ТЕКСЕРУ (REAL TIME)
+textarea.addEventListener("input", () => {
+  if (finished) return;
 
-    <p><b>&lt;sub&gt;</b> и <b>&lt;sup&gt;</b> — нижний и верхний индексы.<br>
-    Пример: H<sub>2</sub>O, X<sup>2</sup></p>
+  let code = textarea.value.toLowerCase();
+  let score = 0;
 
-    <h3>Теги форматирования списков</h3>
+  try {
+    // ❌ Егер JS жазып, қате болса
+    new Function(code.includes("<script") ? code : "");
 
-    <p><b>1. Неупорядоченный список</b> – <code>&lt;ul&gt;</code> и <code>&lt;li&gt;</code></p>
-    <pre>
-&lt;ul&gt;
-  &lt;li&gt;HTML&lt;/li&gt;
-  &lt;li&gt;CSS&lt;/li&gt;
-  &lt;li&gt;JavaScript&lt;/li&gt;
-&lt;/ul&gt;
-    </pre>
+    if (code.includes("<html>")) score += 1;
+    if (code.includes("</html>")) score += 1;
+    if (code.includes("<head>")) score += 1;
+    if (code.includes("</head>")) score += 1;
+    if (code.includes("<header>")) score += 2;
+    if (code.includes("</header>")) score += 2;
+    
+if (code.includes("<style>")) score += 1; if (code.includes("</style>")) score += 1;
+if (code.includes("<body>")) score += 2; if (code.includes("</body>")) score += 2;
+if (code.includes("<nav>")) score += 2; if (code.includes("</nav>")) score += 2;
+if (code.includes("<a>")) score += 1; if (code.includes("</a>")) score += 1;
+if (code.includes("<section>")) score += 4; if (code.includes("</section>")) score += 4;
+if (code.includes("<h1>")) score += 1; if (code.includes("</h1>")) score += 1;
+if (code.includes("<p>")) score += 1; if (code.includes("</p>")) score += 1;
+if (code.includes("<button>")) score += 6; if (code.includes("</button>")) score += 6;
+if (code.includes("<footer>")) score += 5; if (code.includes("</footer>")) score += 5;
 
-    <p><b>2. Упорядоченный список</b> – <code>&lt;ol&gt;</code> и <code>&lt;li&gt;</code></p>
-    <pre>
-&lt;ol&gt;
-  &lt;li&gt;Первый&lt;/li&gt;
-  &lt;li&gt;Второй&lt;/li&gt;
-  &lt;li&gt;Третий&lt;/li&gt;
-&lt;/ol&gt;
-    </pre>
+if (code.includes("button:hover")) score += 4;
+if (code.includes("Home")) score += 2;
+if (code.includes("About")) score += 2;
+if (code.includes("Contact")) score += 2;
+if (code.includes("2025")) score += 2;
+if (code.includes("background")) score += 2;
+if (code.includes("padding")) score += 2;
+if (code.includes("margin{")) score += 3;
+if (code.includes("border{")) score += 2;
+if (code.includes("background: blue;")) score += 5;
+if (code.includes("header{")) score += 2;
+if (code.includes("button:active")) score += 4;
+if (code.includes("footer{")) score += 2;
+if (code.includes("color")) score += 2;
+if (code.includes("padding: 22px;")) score += 2;
+if (code.includes("padding: 223px;")) score += 3;
+if (code.includes("padding: 10px;")) score += 2;
 
-    <p><b>3. Список определений</b> – <code>&lt;dl&gt;</code>, <code>&lt;dt&gt;</code>, <code>&lt;dd&gt;</code></p>
-    <pre>
-&lt;dl&gt;
-  &lt;dt&gt;HTML&lt;/dt&gt;
-  &lt;dd&gt;Язык гипертекстовой разметки&lt;/dd&gt;
-&lt;/dl&gt;
-    </pre>
 
-    <div class="test">
-      <h3>8. Мини-тест</h3>
-      <ol>
-        <li>Для чего используется тег &lt;b&gt;?<br>a) Для наклона текста<br>b) Для выделения жирным<br>c) Для создания списка</li>
-        <li>Какой тег обозначает элемент списка?<br>a) &lt;ul&gt;<br>b) &lt;li&gt;<br>c) &lt;ol&gt;</li>
-        <li>Что делает тег &lt;mark&gt;?<br>a) Удаляет текст<br>b) Выделяет текст<br>c) Уменьшает текст</li>
-        <li>Начальный тег упорядоченного списка:<br>a) &lt;ul&gt;<br>b) &lt;ol&gt;<br>c) &lt;li&gt;</li>
-        <li>Для создания нижнего индекса используется:<br>a) &lt;sub&gt;<br>b) &lt;sup&gt;<br>c) &lt;small&gt;</li>
-        <li>Какой тег делает текст курсивом?<br>a) &lt;b&gt;<br>b) &lt;u&gt;<br>c) &lt;i&gt;</li>
-      </ol>
-    </div>
+  } catch (e) {
+    score = 0; // ⚠️ ҚАТЕ → 0
+  }
 
-    <div class="task">
-      <h3>9. Практическая работа</h3>
-      <p>Тема: <b>«Мои любимые предметы»</b></p>
-      <ul>
-        <li>Напишите заголовок страницы с помощью тега <b>&lt;h1&gt;</b>.</li>
-        <li>Укажите своё имя и группу.</li>
-        <li>Отформатируйте предложение с тегами <b>&lt;b&gt;</b>, <b>&lt;i&gt;</b>, <b>&lt;mark&gt;</b>.</li>
-        <li>Создайте список любимых предметов с помощью <b>&lt;ul&gt;</b> или <b>&lt;ol&gt;</b>.</li>
-        <li>Добавьте список определений с помощью <b>&lt;dl&gt;</b> (например: HTML — язык разметки веб-страниц).</li>
-      </ul>
-    </div>
-  </div>
+  scoreEl.innerText = `${score} / 90`;
+});
 
-  <script>
-    function showLang(lang) {
-      document.querySelectorAll('.content').forEach(el => el.classList.remove('active'));
-      document.getElementById(lang).classList.add('active');
-    }
-  </script>
+// ⏱ ТАЙМЕР
+let time = 25 * 60;
+const timer = setInterval(() => {
+  let m = Math.floor(time / 60);
+  let s = time % 60;
+  document.getElementById("timer").innerText =
+    `${m}:${s < 10 ? "0" : ""}${s}`;
+  time--;
+
+  if (time < 0) {
+    clearInterval(timer);
+    finished = true;
+    textarea.disabled = true;
+    alert("Уақыт бітті! Балл бекітілді.");
+  }
+}, 1000);
+</script>
+
 </body>
 </html>
