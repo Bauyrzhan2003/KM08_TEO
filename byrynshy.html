@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>HTML тренажёр — спец-группа</title>
+<style>
+body { font-family: Arial, sans-serif; background:#f2f2f2; padding:20px; }
+.task { background:#fff; padding:15px; margin-bottom:25px; border-radius:10px; }
+textarea { width:100%; height:90px; font-size:14px; }
+iframe { width:100%; height:120px; border:1px solid #ccc; background:#fff; }
+.row { display:flex; gap:15px; margin-top:10px; }
+.col { width:50%; }
+button { padding:8px 15px; margin-top:8px; }
+h4 { margin-bottom:5px; }
+</style>
+</head>
+<body>
+
+<h1>🧑‍💻 HTML учебный тренажёр</h1>
+<h3>Баллы: <span id="score">0</span></h3>
+
+<script>
+let score = 0;
+function check(codeId, frameId, key){
+  let code = document.getElementById(codeId).value;
+  document.getElementById(frameId).srcdoc = code;
+  if(code.includes(key)){
+    score += 5;
+    document.getElementById("score").innerText = score;
+    alert("Правильно! +5 баллов");
+  } else {
+    alert("Посмотри пример справа 👀");
+  }
+}
+</script>
+
+<!-- ШАБЛОН ЗАДАНИЯ -->
+<!-- 1 -->
+<div class="task">
+<h3>Задание 1 (очень легко)</h3>
+<p>Напиши заголовок &lt;h1&gt;</p>
+<textarea id="c1"></textarea>
+<button onclick="check('c1','r1','<h1')">Проверить</button>
+<div class="row">
+  <div class="col">
+    <h4>Твой результат</h4>
+    <iframe id="r1"></iframe>
+  </div>
+  <div class="col">
+    <h4>Как должно быть</h4>
+    <iframe srcdoc="<h1>Привет!</h1>"></iframe>
+  </div>
+</div>
+</div>
+
+<!-- 2 -->
+<div class="task">
+<h3>Задание 2 (очень легко)</h3>
+<p>Добавь поле ввода &lt;input&gt;</p>
+<textarea id="c2"></textarea>
+<button onclick="check('c2','r2','<input')">Проверить</button>
+<div class="row">
+  <div class="col">
+    <h4>Твой результат</h4>
+    <iframe id="r2"></iframe>
+  </div>
+  <div class="col">
+    <h4>Как должно быть</h4>
+    <iframe srcdoc="<input type='text' placeholder='Имя'>"></iframe>
+  </div>
+</div>
+</div>
+
+<!-- 3 -->
+<div class="task">
+<h3>Задание 3 (средний)</h3>
+<p>Создай кнопку &lt;button&gt;</p>
+<textarea id="c3"></textarea>
+<button onclick="check('c3','r3','<button')">Проверить</button>
+<div class="row">
+  <div class="col">
+    <h4>Твой результат</h4>
+    <iframe id="r3"></iframe>
+  </div>
+  <div class="col">
+    <h4>Как должно быть</h4>
+    <iframe srcdoc="<button>Нажми</button>"></iframe>
+  </div>
+</div>
+</div>
+
+<!-- 4 -->
+<div class="task">
+<h3>Задание 4 (средний)</h3>
+<p>Добавь изображение &lt;img&gt;</p>
+<textarea id="c4"></textarea>
+<button onclick="check('c4','r4','<img')">Проверить</button>
+<div class="row">
+  <div class="col">
+    <h4>Твой результат</h4>
+    <iframe id="r4"></iframe>
+  </div>
+  <div class="col">
+    <h4>Как должно быть</h4>
+    <iframe srcdoc="<img src='https://via.placeholder.com/100'>"></iframe>
+  </div>
+</div>
+</div>
+
+<!-- 5 -->
+<div class="task">
+<h3>Задание 5 (подумай)</h3>
+<p>Блок &lt;div&gt; с фоном</p>
+<textarea id="c5"></textarea>
+<button onclick="check('c5','r5','background')">Проверить</button>
+<div class="row">
+  <div class="col">
+    <h4>Твой результат</h4>
+    <iframe id="r5"></iframe>
+  </div>
+  <div class="col">
+    <h4>Как должно быть</h4>
+    <iframe srcdoc="<div style='background:lightblue'>Блок</div>"></iframe>
+  </div>
+</div>
+</div>
+
+<!-- 6 -->
+<div class="task">
+<h3>Задание 6 (подумай)</h3>
+<p>Текст по центру</p>
+<textarea id="c6"></textarea>
+<button onclick="check('c6','r6','text-align')">Проверить</button>
+<div class="row">
+  <div class="col">
+    <h4>Твой результат</h4>
+    <iframe id="r6"></iframe>
+  </div>
+  <div class="col">
+    <h4>Как должно быть</h4>
+    <iframe srcdoc="<div style='text-align:center'>По центру</div>"></iframe>
+  </div>
+</div>
+</div>
+
+<!-- 7 -->
+<div class="task">
+<h3>Задание 7 (подумай)</h3>
+<p>Кнопка шириной 150px</p>
+<textarea id="c7"></textarea>
+<button onclick="check('c7','r7','width')">Проверить</button>
+<div class="row">
+  <div class="col">
+    <h4>Твой результат</h4>
+    <iframe id="r7"></iframe>
+  </div>
+  <div class="col">
+    <h4>Как должно быть</h4>
+    <iframe srcdoc="<button style='width:150px'>Кнопка</button>"></iframe>
+  </div>
+</div>
+</div>
+
+<!-- 8 -->
+<div class="task">
+<h3>Задание 8 (подумай)</h3>
+<p>Input с placeholder</p>
+<textarea id="c8"></textarea>
+<button onclick="check('c8','r8','placeholder')">Проверить</button>
+<div class="row">
+  <div class="col">
+    <h4>Твой результат</h4>
+    <iframe id="r8"></iframe>
+  </div>
+  <div class="col">
+    <h4>Как должно быть</h4>
+    <iframe srcdoc="<input placeholder='Телефон'>"></iframe>
+  </div>
+</div>
+</div>
+
+<!-- 9 -->
+<div class="task">
+<h3>Задание 9 (подумай)</h3>
+<p>Рамка вокруг блока</p>
+<textarea id="c9"></textarea>
+<button onclick="check('c9','r9','border')">Проверить</button>
+<div class="row">
+  <div class="col">
+    <h4>Твой результат</h4>
+    <iframe id="r9"></iframe>
+  </div>
+  <div class="col">
+    <h4>Как должно быть</h4>
+    <iframe srcdoc="<div style='border:1px solid black'>Блок</div>"></iframe>
+  </div>
+</div>
+</div>
+
+<!-- 10 -->
+<div class="task">
+<h3>Задание 10 (финал)</h3>
+<p>Заголовок + input + кнопка</p>
+<textarea id="c10"></textarea>
+<button onclick="check('c10','r10','<input')">Проверить</button>
+<div class="row">
+  <div class="col">
+    <h4>Твой результат</h4>
+    <iframe id="r10"></iframe>
+  </div>
+  <div class="col">
+    <h4>Как должно быть</h4>
+    <iframe srcdoc="
+      <h3>Вход</h3>
+      <input placeholder='Имя'>
+      <button>Отправить</button>
+    "></iframe>
+  </div>
+</div>
+</div>
+
+</body>
+</html>
