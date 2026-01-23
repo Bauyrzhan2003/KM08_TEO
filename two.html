@@ -1,217 +1,213 @@
 <!DOCTYPE html>
-<html lang="kk">
+<html lang="ru">
 <head>
 <meta charset="UTF-8">
-<title>Frontend RK – Auto Score</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<title>HTML + CSS тренажёр — спец-группа</title>
 <style>
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #020617;
-  color: white;
-}
-
-h3 { margin: 5px 0; }
-
-.main {
-  display: flex;
-  flex-wrap: wrap;
-  height: 75vh;
-}
-
-.sample, .editor {
-  flex: 1 1 500px;
-  padding: 10px;
-  box-sizing: border-box;
-}
-
-iframe {
-  width: 100%;
-  height: 100%;
-  border: 2px solid white;
-  background: white;
-}
-
-textarea {
-  width: 100%;
-  height: 100%;
-  background: #0f172a;
-  color: #22c55e;
-  font-size: 14px;
-  border: none;
-  outline: none;
-  resize: none;
-}
-
-.bottom {
-  padding: 10px;
-  border-top: 1px solid #1e293b;
-  font-size: 15px;
-  margin-top: 35px;
-}
-
-.timer {
-  float: right;
-  font-weight: bold;
-}
-
-.score {
-  font-weight: bold;
-  color: #22c55e;
-}
+body { font-family: Arial, sans-serif; background:#f2f2f2; padding:20px; }
+.task { background:#fff; padding:15px; margin-bottom:25px; border-radius:10px; }
+textarea { width:100%; height:120px; font-size:14px; }
+iframe { width:100%; height:200px; border:1px solid #ccc; background:#fff; }
+.row { display:flex; gap:15px; margin-top:10px; }
+.col { width:50%; }
+button { padding:8px 15px; margin-top:8px; }
+h4 { margin-bottom:5px; }
 </style>
 </head>
+<body>
 
-<body oncontextmenu="return false">
-
-<div class="main">
-
-  <!-- ДАЙЫН ҮЛГІ -->
-  <div class="sample">
-    <h3>Дайын үлгі (көшіру)</h3>
-    <iframe srcdoc="
-    <style>
-  body { margin: 0; font-family: Arial; }
-  header { background: blue; padding: 22px; color: white; }
-  nav a { 
-    margin-right: 15px; 
-    color: white; 
-    text-decoration: none; 
-    transition: color 0.3s, transform 0.2s; /* анимация үшін */
-  }
-  nav a:hover {
-    color: #22c55e; /* hover болғанда түс өзгереді */
-    transform: scale(1.1); /* сәл үлкейту */
-  }
-  section { padding: 223px; text-align: center; }
-  button { 
-    padding: 10px 20px; 
-    background: #22c55e; 
-    border: none; 
-    color: white;
-    cursor: pointer;
-    transition: background 0.3s, transform 0.2s; /* анимация үшін */
-  }
-  button:hover {
-    background: #16a34a; /* hover болғанда түс өзгереді */
-    transform: scale(1.05); /* сәл үлкейту */
-  }
-  button:active {
-    transform: scale(0.95); /* басылғандай эффект */
-  }
-  footer { background: blue; color: white; text-align: center; padding: 10px; }
-  @media(max-width:600px){section{padding:20px}}
-</style>
-
-<header>
-  <nav>
-    <a>Home</a><a>About</a><a>Contact</a>
-  </nav>
-</header>
-<section>
-  <h1>IT Company</h1>
-  <p>AGKSIT Session</p>
-  <button>Get Started</button>
-</section>
-<footer>© 2025</footer>
-
-    "></iframe>
-  </div>
-
-  <!-- СТУДЕНТ КОДЫ -->
-  <div class="editor">
-    <h3>Сенің кодың</h3>
-    <textarea id="code" placeholder="HTML + CSS осы жерге жазылады"></textarea>
-  </div>
-
-</div>
-
-<div class="bottom">
-  ⏱ Уақыт: <span class="timer" id="timer">25:00</span><br>
-  🎯 Балл: <span class="score" id="score">0 / 90</span><br>
-</div>
+<h1>🧑‍💻 HTML + CSS учебный тренажёр</h1>
+<h3>Баллы: <span id="score">0</span></h3>
 
 <script>
-document.onkeydown = e => (e.ctrlKey || e.keyCode === 123) ? false : true;
-
-const textarea = document.getElementById("code");
-const scoreEl = document.getElementById("score");
-
-let finished = false;
-
-// 🔍 АВТО ТЕКСЕРУ (REAL TIME)
-textarea.addEventListener("input", () => {
-  if (finished) return;
-
-  let code = textarea.value.toLowerCase();
-  let score = 0;
-
-  try {
-    // ❌ Егер JS жазып, қате болса
-    new Function(code.includes("<script") ? code : "");
-
-    if (code.includes("<html>")) score += 1;
-    if (code.includes("</html>")) score += 1;
-    if (code.includes("<head>")) score += 1;
-    if (code.includes("</head>")) score += 1;
-    if (code.includes("<header>")) score += 2;
-    if (code.includes("</header>")) score += 2;
-    
-if (code.includes("<style>")) score += 1; if (code.includes("</style>")) score += 1;
-if (code.includes("<body>")) score += 2; if (code.includes("</body>")) score += 2;
-if (code.includes("<nav>")) score += 2; if (code.includes("</nav>")) score += 2;
-if (code.includes("<a>")) score += 1; if (code.includes("</a>")) score += 1;
-if (code.includes("<section>")) score += 4; if (code.includes("</section>")) score += 4;
-if (code.includes("<h1>")) score += 1; if (code.includes("</h1>")) score += 1;
-if (code.includes("<p>")) score += 1; if (code.includes("</p>")) score += 1;
-if (code.includes("<button>")) score += 6; if (code.includes("</button>")) score += 6;
-if (code.includes("<footer>")) score += 5; if (code.includes("</footer>")) score += 5;
-
-if (code.includes("button:hover")) score += 4;
-if (code.includes("Home")) score += 2;
-if (code.includes("About")) score += 2;
-if (code.includes("Contact")) score += 2;
-if (code.includes("2025")) score += 2;
-if (code.includes("background")) score += 2;
-if (code.includes("padding")) score += 2;
-if (code.includes("margin{")) score += 3;
-if (code.includes("border{")) score += 2;
-if (code.includes("background: blue;")) score += 5;
-if (code.includes("header{")) score += 2;
-if (code.includes("button:active")) score += 4;
-if (code.includes("footer{")) score += 2;
-if (code.includes("color")) score += 2;
-if (code.includes("padding: 22px;")) score += 2;
-if (code.includes("padding: 223px;")) score += 3;
-if (code.includes("padding: 10px;")) score += 2;
-
-
-  } catch (e) {
-    score = 0; // ⚠️ ҚАТЕ → 0
+let score = 0;
+function check(codeId, frameId, keys){
+  let code = document.getElementById(codeId).value;
+  document.getElementById(frameId).srcdoc = code;
+  let correct = keys.every(k => code.includes(k));
+  if(correct){
+    score += 5;
+    document.getElementById("score").innerText = score;
+    alert("Правильно! +5 баллов");
+  } else {
+    alert("Посмотри пример справа 👀");
   }
-
-  scoreEl.innerText = `${score} / 90`;
-});
-
-// ⏱ ТАЙМЕР
-let time = 25 * 60;
-const timer = setInterval(() => {
-  let m = Math.floor(time / 60);
-  let s = time % 60;
-  document.getElementById("timer").innerText =
-    `${m}:${s < 10 ? "0" : ""}${s}`;
-  time--;
-
-  if (time < 0) {
-    clearInterval(timer);
-    finished = true;
-    textarea.disabled = true;
-    alert("Уақыт бітті! Балл бекітілді.");
-  }
-}, 1000);
+}
 </script>
+
+<!-- ================== Задания 10–20 ================== -->
+
+<!-- 10 -->
+<div class="task">
+<h3>Задание 10</h3>
+<p>Сделай текст красным</p>
+<textarea id="c10"></textarea>
+<button onclick="check('c10','r10',['color'])">Проверить</button>
+<div class="row">
+<div class="col"><h4>Твой результат</h4><iframe id="r10"></iframe></div>
+<div class="col"><h4>Как должно быть</h4><iframe srcdoc="<p style='color:red'>Привет, мир!</p>"></iframe></div>
+</div>
+</div>
+
+<!-- 11 -->
+<div class="task">
+<h3>Задание 11</h3>
+<p>Фон блока синий</p>
+<textarea id="c11"></textarea>
+<button onclick="check('c11','r11',['background'])">Проверить</button>
+<div class="row">
+<div class="col"><iframe id="r11"></iframe></div>
+<div class="col"><iframe srcdoc="<div style='background:blue'>Блок</div>"></iframe></div>
+</div>
+</div>
+
+<!-- 12 -->
+<div class="task">
+<h3>Задание 12</h3>
+<p>Текст заголовка 32px</p>
+<textarea id="c12"></textarea>
+<button onclick="check('c12','r12',['font-size'])">Проверить</button>
+<div class="row">
+<div class="col"><iframe id="r12"></iframe></div>
+<div class="col"><iframe srcdoc="<h1 style='font-size:32px'>Заголовок</h1>"></iframe></div>
+</div>
+</div>
+
+<!-- 13 -->
+<div class="task">
+<h3>Задание 13</h3>
+<p>Блок 200x100px с серым фоном</p>
+<textarea id="c13"></textarea>
+<button onclick="check('c13','r13',['width'])">Проверить</button>
+<div class="row">
+<div class="col"><iframe id="r13"></iframe></div>
+<div class="col"><iframe srcdoc="<div style='width:200px;height:100px;background:gray'>Блок</div>"></iframe></div>
+</div>
+</div>
+
+<!-- 14 -->
+<div class="task">
+<h3>Задание 14</h3>
+<p>Рамка блока 2px, solid, черная</p>
+<textarea id="c14"></textarea>
+<button onclick="check('c14','r14',['border'])">Проверить</button>
+<div class="row">
+<div class="col"><iframe id="r14"></iframe></div>
+<div class="col"><iframe srcdoc="<div style='border:2px solid black'>Карточка</div>"></iframe></div>
+</div>
+</div>
+
+<!-- 15 -->
+<div class="task">
+<h3>Задание 15</h3>
+<p>Внутренний отступ padding 20px</p>
+<textarea id="c15"></textarea>
+<button onclick="check('c15','r15',['padding'])">Проверить</button>
+<div class="row">
+<div class="col"><iframe id="r15"></iframe></div>
+<div class="col"><iframe srcdoc="<div style='padding:20px;background:#eee'>Текст внутри блока</div>"></iframe></div>
+</div>
+</div>
+
+<!-- 16 -->
+<div class="task">
+<h3>Задание 16</h3>
+<p>Выровняй текст по центру</p>
+<textarea id="c16"></textarea>
+<button onclick="check('c16','r16',['text-align'])">Проверить</button>
+<div class="row">
+<div class="col"><iframe id="r16"></iframe></div>
+<div class="col"><iframe srcdoc="<div style='text-align:center'>Центрированный текст</div>"></iframe></div>
+</div>
+</div>
+
+<!-- 17 -->
+<div class="task">
+<h3>Задание 17</h3>
+<p>Скругление углов 15px, фон зелёный</p>
+<textarea id="c17"></textarea>
+<button onclick="check('c17','r17',['border-radius'])">Проверить</button>
+<div class="row">
+<div class="col"><iframe id="r17"></iframe></div>
+<div class="col"><iframe srcdoc="<div style='background:green;border-radius:15px;padding:10px;color:white'>Кнопка</div>"></iframe></div>
+</div>
+</div>
+
+<!-- 18 -->
+<div class="task">
+<h3>Задание 18</h3>
+<p>Кнопка при наведении увеличивается и меняет фон</p>
+<textarea id="c18"></textarea>
+<button onclick="check('c18','r18',['transform'])">Проверить</button>
+<div class="row">
+<div class="col"><iframe id="r18"></iframe></div>
+<div class="col"><iframe srcdoc="<style>
+.btn { background:#3498db;color:white;padding:10px 20px;display:inline-block;transition:all 0.3s ease;border-radius:8px;cursor:pointer;margin:20px auto; display:block; }
+.btn:hover { transform: scale(1.2); background: orange; }
+</style>
+<div class='btn'>Наведи на меня</div>"></iframe></div>
+</div>
+</div>
+
+<!-- 19 -->
+<div class="task">
+<h3>Задание 19</h3>
+<p>Ряд карточек с hover-эффектом (увеличение и тень)</p>
+<textarea id="c19"></textarea>
+<button onclick="check('c19','r19',['flex'])">Проверить</button>
+<div class="row">
+<div class="col"><iframe id="r19"></iframe></div>
+<div class="col"><iframe srcdoc="<style>
+.container { display:flex; gap:20px; justify-content:center; margin-top:20px; }
+.card { width:100px;height:100px;background:#2ecc71;display:flex;justify-content:center;align-items:center;color:white;border-radius:10px;transition:all 0.3s ease;cursor:pointer; }
+.card:hover { transform: scale(1.1); box-shadow:0 5px 15px rgba(0,0,0,0.3); }
+</style>
+<div class='container'>
+  <div class='card'>1</div>
+  <div class='card'>2</div>
+  <div class='card'>3</div>
+</div>"></iframe></div>
+</div>
+</div>
+
+<!-- 20 Супер-задание -->
+<div class="task">
+<h3>Задание 20 — Супер CSS</h3>
+<p>Создай страницу с блоками:</p>
+<ul>
+<li>Центрированный блок 200x100px, фиолетовый фон, белый текст, border-radius 10px, padding 15px</li>
+<li>Кнопка, которая увеличивается и меняет цвет при наведении</li>
+<li>3 карточки в ряд с hover-эффектом (scale + тень)</li>
+<li>Текст в блоках любого цвета</li>
+</ul>
+
+<textarea id="super"></textarea>
+<button onclick="check('super','result',['background','border-radius','padding','transform','flex','hover'])">Проверить</button>
+
+<div class="row">
+<div class="col">
+<h4>Твой результат</h4>
+<iframe id="result"></iframe>
+</div>
+<div class="col">
+<h4>Как должно быть</h4>
+<iframe srcdoc="<style>
+.center-box { width:200px;height:100px;background:purple;color:white;margin:20px auto;text-align:center;line-height:100px;border-radius:10px;padding:15px; }
+.btn { background:#3498db;color:white;padding:10px 20px;display:inline-block;transition:all 0.3s ease;border-radius:8px;cursor:pointer;margin:20px auto; display:block; }
+.btn:hover { transform: scale(1.2); background: orange; }
+.container { display:flex; gap:20px; justify-content:center; margin-top:20px; }
+.card { width:100px;height:100px;background:#2ecc71;display:flex;justify-content:center;align-items:center;color:white;border-radius:10px;transition:all 0.3s ease;cursor:pointer; }
+.card:hover { transform: scale(1.1); box-shadow:0 5px 15px rgba(0,0,0,0.3); }
+</style>
+<div class='center-box'>Я по центру</div>
+<div class='btn'>Наведи на меня</div>
+<div class='container'>
+  <div class='card'>1</div>
+  <div class='card'>2</div>
+  <div class='card'>3</div>
+</div>"></iframe>
+</div>
+</div>
 
 </body>
 </html>
